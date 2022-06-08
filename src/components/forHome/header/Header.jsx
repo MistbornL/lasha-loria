@@ -3,8 +3,14 @@ import "./header.scss";
 import greenPack from "../../../assets/greenpack.png";
 import down from "../../../assets/downarrow.png";
 import cart from "../../../assets/cart.png";
+import { useState } from "react";
 
 export const Header = () => {
+  const [toggleArrow, setToggleArrow] = useState(false);
+
+  const handleArrow = () => {
+    setToggleArrow(!toggleArrow);
+  };
   return (
     <header>
       <nav>
@@ -23,7 +29,7 @@ export const Header = () => {
         <div className="currency">
           <p>$</p>
           <span>
-            <img src={down} alt="arrow" />
+            <img onClick={handleArrow} src={down} alt="arrow" />
           </span>
           <img src={cart} alt="cart" />
         </div>
