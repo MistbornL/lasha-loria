@@ -1,0 +1,27 @@
+@import "../../../variables.scss";
+
+header {
+  nav {
+    @include flex(space-between);
+    height: 80px;
+  }
+}
+
+.header-top-right {
+  display: flex;
+  gap: 32px;
+  li {
+    list-style: none;
+    @include basic-font(600, 16px, 120%);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    span {
+      color: #5ece7b;
+    }
+  }
+}
+
+.currency {
+  display: flex;
+}
