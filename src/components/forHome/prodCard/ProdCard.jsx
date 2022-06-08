@@ -10,7 +10,7 @@ export const ProdCard = () => {
       </div>
       <div className="desc">
         <p>Apollo Running Short</p>
-        <span>$50.00</span>
+        <strong>$50.00</strong>
       </div>
     </div>
   );

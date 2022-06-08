@@ -12,6 +12,6 @@
   }
 
   span {
-    @include basic-font(500, 18px, 160%);
+    @include basic-font(500, 18px, 160%, rgb(0, 0, 0));
   }
 }

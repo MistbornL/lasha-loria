@@ -24,7 +24,7 @@ export const Header = () => {
         </ul>
 
         <div style={{ display: "flex" }}>
-          <img className="green-logo" src={greenPack} alt="logo" />
+          <img className="header-middle" src={greenPack} alt="logo" />
         </div>
 
         <div className="currency">
