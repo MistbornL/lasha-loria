@@ -1,0 +1,17 @@
+@import "../../../variables.scss";
+
+.prod-card-top {
+  width: 386px;
+  height: 444px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    @include basic-font(300, 18px, 160%);
+  }
+
+  span {
+    @include basic-font(500, 18px, 160%);
+  }
+}

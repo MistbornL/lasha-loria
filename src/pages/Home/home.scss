@@ -1,5 +1,14 @@
 @import "../../variables.scss";
 .category-name {
-  @include basic-font(400, 42px, 160%);
-  margin-top: 80px;
+  h1 {
+    @include basic-font(400, 42px, 160%);
+    margin-top: 80px;
+  }
+}
+
+.prod-card {
+  margin-top: 103px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 103px;
 }
