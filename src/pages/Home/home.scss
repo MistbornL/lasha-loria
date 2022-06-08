@@ -1,8 +1,11 @@
 @import "../../variables.scss";
 .category-name {
+  width: 299px;
+  height: 68px;
   h1 {
     @include basic-font(400, 42px, 160%);
     margin-top: 80px;
+    display: flex;
   }
 }
 

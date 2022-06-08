@@ -6,7 +6,10 @@ export const Home = () => {
   return (
     <div className="App">
       <Header />
-      <h1 className="category-name">Category Name</h1>
+      <div className="category-name">
+        {" "}
+        <h1>Category Name</h1>
+      </div>
 
       <main>
         <section className="prod-card">

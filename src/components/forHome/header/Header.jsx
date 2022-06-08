@@ -4,6 +4,7 @@ import greenPack from "../../../assets/greenpack.png";
 import down from "../../../assets/downarrow.png";
 import cart from "../../../assets/cart.png";
 import { useState } from "react";
+import { CurrencyPop } from "./currencyPopUp/CurrencyPop";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
@@ -31,6 +32,7 @@ export const Header = () => {
           <span>
             <img onClick={handleArrow} src={down} alt="arrow" />
           </span>
+          {toggleArrow ? <CurrencyPop /> : null}
           <img src={cart} alt="cart" />
         </div>
       </nav>

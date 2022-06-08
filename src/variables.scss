@@ -7,8 +7,8 @@
 @mixin basic-font($weight, $size, $height, $color: #1d1f22) {
   font-family: "Raleway", sans-serif;
   font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 120%;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
   color: $color;
 }

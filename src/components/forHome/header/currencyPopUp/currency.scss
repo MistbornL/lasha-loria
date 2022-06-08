@@ -1,0 +1,24 @@
+@import "../../../../variables.scss";
+.pop {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 114px;
+  height: 169px;
+  margin-top: 10em;
+  justify-content: center;
+
+  div {
+    width: 114px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+  }
+  div:hover {
+    background: #eeeeee;
+  }
+  h1 {
+    margin: 0;
+    @include basic-font(500, 18px, 160%);
+  }
+}
