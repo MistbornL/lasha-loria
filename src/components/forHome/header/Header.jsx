@@ -2,6 +2,7 @@ import React from "react";
 import "./header.scss";
 import greenPack from "../../../assets/greenpack.png";
 import down from "../../../assets/downarrow.png";
+import cart from "../../../assets/cart.png";
 
 export const Header = () => {
   return (
@@ -24,6 +25,7 @@ export const Header = () => {
           <span>
             <img src={down} alt="arrow" />
           </span>
+          <img src={cart} alt="cart" />
         </div>
       </nav>
     </header>

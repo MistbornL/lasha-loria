@@ -1,0 +1,5 @@
+@import "../../variables.scss";
+.category-name {
+  @include basic-font(400, 42px, 160%);
+  margin-top: 80px;
+}
