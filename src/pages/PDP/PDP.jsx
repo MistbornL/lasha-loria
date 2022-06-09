@@ -49,18 +49,14 @@ export default class PDP extends Component {
               </div>
 
               <div className="desc-midd">
-                <h1>size:</h1>
-                <div className="xs">
-                  <span>XS</span>
-                </div>
-                <div className="s">
-                  <span>S</span>
-                </div>
-                <div className="M">
-                  <span>M</span>
-                </div>
-                <div className="L">
-                  <span>L</span>
+                <h1>
+                  <strong>size:</strong>
+                </h1>
+                <div className="size">
+                  <div>XS</div>
+                  <div>S</div>
+                  <div>M</div>
+                  <div>L</div>
                 </div>
 
                 <div className="price">
