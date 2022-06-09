@@ -3,6 +3,16 @@ import Header from "../../components/forHome/header/Header";
 import "./cart.scss";
 import shirt from "../../assets/shirt.png";
 export default class Card extends Component {
+  constructor() {
+    super();
+    this.state = { counter: 1 };
+  }
+  handleIncr = () => {
+    this.setState({ counter: this.state.counter + 1 });
+  };
+  handleDecr = () => {
+    this.setState({ counter: this.state.counter - 1 });
+  };
   render() {
     return (
       <div className="App">
@@ -40,9 +50,13 @@ export default class Card extends Component {
                   height: "285px",
                 }}
               >
-                <button>+</button>
-                <span>1</span>
-                <button>-</button>
+                <button style={{ cursor: "pointer" }} onClick={this.handleIncr}>
+                  +
+                </button>
+                <span>{this.state.counter}</span>
+                <button style={{ cursor: "pointer" }} onClick={this.handleDecr}>
+                  -
+                </button>
               </div>
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <img
