@@ -19,15 +19,25 @@ class Header extends React.Component {
   };
 
   componentDidMount() {
-    axios
-      .get({
-        url: "http://localhost:4000/",
-        method: "post",
-        data: { GET_CURRENCY },
-      })
-      .then((response) => {
-        console.log(response.data);
-      });
+    // axios
+    //   .get({
+    //     url: "http://localhost:4000/",
+    //     method: "post",
+    //     data: { GET_CURRENCY },
+    //   })
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   });
+    fetch("http://localhost:4000/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: { query: GET_CURRENCY },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   }
 
   render() {
