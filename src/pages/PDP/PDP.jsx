@@ -59,8 +59,25 @@ export default class PDP extends Component {
                   <div>L</div>
                 </div>
 
+                <div className="color-wrap">
+                  <h1>Color</h1>
+                  <div className="color">
+                    <div
+                      style={{ background: "#D3D2D5" }}
+                      className="grey"
+                    ></div>
+                    <div
+                      style={{ background: "black" }}
+                      className="black"
+                    ></div>
+                    <div
+                      style={{ background: "green" }}
+                      className="green"
+                    ></div>
+                  </div>
+                </div>
                 <div className="price">
-                  <h1>Price</h1>
+                  <h1>Price:</h1>
                   <h2>$50.00</h2>
                   <button>ADD TO CART</button>
                 </div>
