@@ -3,6 +3,10 @@ import "./currency.scss";
 import React, { Component } from "react";
 
 export default class CurrencyPop extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="pop">

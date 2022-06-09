@@ -4,9 +4,11 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import App from "./App";
+import { RestLink } from "apollo-link-rest";
 
-const client = new ApolloClient({
-  uri: "http://localhost:4000/",
+const restLink = new RestLink({ uri: "http://localhost:4000/" });
+export const client = new ApolloClient({
+  link: restLink,
   cache: new InMemoryCache(),
 });
 
@@ -17,7 +19,6 @@ root.render(
       <ApolloProvider client={client}>
         <App />
       </ApolloProvider>
-      ,
     </BrowserRouter>
   </React.StrictMode>
 );

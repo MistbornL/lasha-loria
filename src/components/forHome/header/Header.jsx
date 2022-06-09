@@ -5,7 +5,9 @@ import down from "../../../assets/downarrow.png";
 import up from "../../../assets/uparrow.png";
 import cart from "../../../assets/cart.png";
 import CurrencyPop from "../../../components/forHome/header/currencyPopUp/CurrencyPop";
-import { GetCurrency } from "../../../GraphQL/fetches/GetCurrency";
+import { GET_CURRENCY } from "../../../GraphQL/Queries";
+import { request } from "graphql-request";
+import axios from "axios";
 
 class Header extends React.Component {
   constructor() {
@@ -16,10 +18,21 @@ class Header extends React.Component {
     this.setState({ toggleArrow: !this.state.toggleArrow });
   };
 
+  componentDidMount() {
+    axios
+      .get({
+        url: "http://localhost:4000/",
+        method: "post",
+        data: { GET_CURRENCY },
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+  }
+
   render() {
     return (
       <header>
-        <GetCurrency />;
         <nav>
           <ul className="header-top-right">
             <li>WOMEN</li>

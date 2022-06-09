@@ -1,0 +1,15 @@
+.APP {
+  width: 100%;
+  max-width: 1440px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.pdp-wrap {
+  display: flex;
+  .pdp-left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
