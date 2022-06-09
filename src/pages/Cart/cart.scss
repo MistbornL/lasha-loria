@@ -1,0 +1,46 @@
+@import "../../variables.scss";
+.cart-head {
+  h1 {
+    margin-top: 80px;
+    @include basic-font(700, 32px, 40px);
+  }
+}
+
+.cart-wrapper {
+  border-top: 1px solid;
+  border-top-color: #e5e5e5;
+  border-bottom: 1px solid;
+  border-bottom-color: #e5e5e5;
+
+  .cart-left {
+    h1 {
+      margin-top: 24px;
+      @include basic-font(600, 30px, 27px);
+    }
+    h2 {
+      margin: 0;
+      margin-top: 16px;
+      margin-bottom: 20px;
+      @include basic-font(400, 30px, 27px);
+    }
+    span {
+      @include basic-font(700, 24px, 24px);
+    }
+    p {
+      @include basic-font(700, 18px, 18px);
+    }
+  }
+  .cart-size {
+    display: flex;
+    gap: 12px;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 63px;
+      height: 45px;
+      border: 1px solid #1d1f22;
+    }
+  }
+}
