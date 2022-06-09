@@ -5,6 +5,7 @@ import down from "../../../assets/downarrow.png";
 import up from "../../../assets/uparrow.png";
 import cart from "../../../assets/cart.png";
 import CurrencyPop from "../../../components/forHome/header/currencyPopUp/CurrencyPop";
+import { GetCurrency } from "../../../GraphQL/fetches/GetCurrency";
 
 class Header extends React.Component {
   constructor() {
@@ -14,9 +15,11 @@ class Header extends React.Component {
   handleArrow = () => {
     this.setState({ toggleArrow: !this.state.toggleArrow });
   };
+
   render() {
     return (
       <header>
+        <GetCurrency />;
         <nav>
           <ul className="header-top-right">
             <li>WOMEN</li>
