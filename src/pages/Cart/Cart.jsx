@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "../../components/forHome/header/Header";
 import "./cart.scss";
+import shirt from "../../assets/shirt.png";
 export default class Card extends Component {
   render() {
     return (
@@ -24,6 +25,32 @@ export default class Card extends Component {
               <div style={{ background: "#D3D2D5" }} className="grey"></div>
               <div style={{ background: "black" }} className="black"></div>
               <div style={{ background: "green" }} className="green"></div>
+            </div>
+          </div>
+
+          <div className="cart-right">
+            <div className="cart-right-counter">
+              <div
+                style={{
+                  position: "absolute",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  height: "285px",
+                }}
+              >
+                <button>+</button>
+                <span>1</span>
+                <button>-</button>
+              </div>
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <img
+                  style={{ width: "200px", height: "288px" }}
+                  src={shirt}
+                  alt="shirt"
+                />
+              </div>
             </div>
           </div>
         </section>
