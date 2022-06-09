@@ -41,6 +41,43 @@ export default class PDP extends Component {
                 alt="shirt"
               />
             </div>
+
+            <div className="pdp-right">
+              <div className="desc">
+                <h1>Appolo</h1>
+                <h2>running short</h2>
+              </div>
+
+              <div className="desc-midd">
+                <h1>size:</h1>
+                <div className="xs">
+                  <span>XS</span>
+                </div>
+                <div className="s">
+                  <span>S</span>
+                </div>
+                <div className="M">
+                  <span>M</span>
+                </div>
+                <div className="L">
+                  <span>L</span>
+                </div>
+
+                <div className="price">
+                  <h1>Price</h1>
+                  <h2>$50.00</h2>
+                  <button>ADD TO CART</button>
+                </div>
+
+                <div className="desc-bottom">
+                  <p>
+                    Find stunning women's cocktail dresses and party dresses.
+                    Stand out in lace and metallic cocktail dresses and party
+                    dresses from all your favorite brands.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </main>
       </div>
