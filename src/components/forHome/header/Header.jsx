@@ -2,40 +2,46 @@ import React from "react";
 import "./header.scss";
 import greenPack from "../../../assets/greenpack.png";
 import down from "../../../assets/downarrow.png";
+import up from "../../../assets/uparrow.png";
 import cart from "../../../assets/cart.png";
-import { useState } from "react";
-import { CurrencyPop } from "./currencyPopUp/CurrencyPop";
+import CurrencyPop from "../../../components/forHome/header/currencyPopUp/CurrencyPop";
 
-export const Header = () => {
-  const [toggleArrow, setToggleArrow] = useState(false);
-
-  const handleArrow = () => {
-    setToggleArrow(!toggleArrow);
+class Header extends React.Component {
+  constructor() {
+    super();
+    this.state = { toggleArrow: false };
+  }
+  handleArrow = () => {
+    this.setState({ toggleArrow: !this.state.toggleArrow });
   };
-  return (
-    <header>
-      <nav>
-        <ul className="header-top-right">
-          <li>WOMEN</li>
-          <li>MEN</li>
-          <li>
-            <span>KIDS</span>
-          </li>
-        </ul>
+  render() {
+    return (
+      <header>
+        <nav>
+          <ul className="header-top-right">
+            <li>WOMEN</li>
+            <li>MEN</li>
+            <li>
+              <span>KIDS</span>
+            </li>
+          </ul>
 
-        <div style={{ display: "flex" }}>
-          <img className="header-middle" src={greenPack} alt="logo" />
-        </div>
+          <div style={{ display: "flex" }}>
+            <img className="header-middle" src={greenPack} alt="logo" />
+          </div>
 
-        <div className="currency">
-          <p>$</p>
-          <span>
-            <img onClick={handleArrow} src={down} alt="arrow" />
-          </span>
-          {toggleArrow ? <CurrencyPop /> : null}
-          <img src={cart} alt="cart" />
-        </div>
-      </nav>
-    </header>
-  );
-};
+          <div className="currency">
+            <p>$</p>
+            <span onClick={this.handleArrow}>
+              <img src={!this.state.toggleArrow ? down : up} alt="arrow" />
+            </span>
+            {this.state.toggleArrow ? <CurrencyPop /> : null}
+            <img src={cart} alt="cart" />
+          </div>
+        </nav>
+      </header>
+    );
+  }
+}
+
+export default Header;
