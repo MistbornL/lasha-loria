@@ -1,7 +1,8 @@
 @import "../../variables.scss";
 .cart-head {
+  margin-top: 80px;
+  margin-bottom: 45px;
   h1 {
-    margin-top: 80px;
     @include basic-font(700, 32px, 40px);
   }
 }
@@ -32,27 +33,10 @@
     }
   }
   .cart-size {
-    display: flex;
-    gap: 12px;
-
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 63px;
-      height: 45px;
-      border: 1px solid #1d1f22;
-    }
+    @include cart-size;
   }
   .cart-color {
-    display: flex;
-    gap: 10px;
-    margin-top: 8px;
-    margin-bottom: 38px;
-    div {
-      width: 32px;
-      height: 32px;
-    }
+    @include cart-color;
   }
 
   .cart-right {
