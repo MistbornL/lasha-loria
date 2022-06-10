@@ -6,8 +6,6 @@ import up from "../../../assets/uparrow.png";
 import cart from "../../../assets/cart.png";
 import CurrencyPop from "../../../components/forHome/header/currencyPopUp/CurrencyPop";
 import { GET_CURRENCY } from "../../../GraphQL/Queries";
-import { request } from "graphql-request";
-import axios from "axios";
 
 class Header extends React.Component {
   constructor() {
