@@ -17,20 +17,24 @@ class Header extends React.Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:4000/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        query: GET_CURRENCY,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }
+    async function getCharacters() {
+      let results = await fetch("http://localhost:4000/", {
+        method: "POST",
 
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          query: GET_CURRENCY,
+        }),
+      });
+      const characters = await results.json();
+      console.log(characters.data);
+    }
+
+    getCharacters();
+  }
   render() {
     return (
       <header>
