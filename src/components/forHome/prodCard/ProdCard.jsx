@@ -28,10 +28,10 @@ export default class ProdCard extends Component {
             alt={this.state.isShown ? "greenCart" : null}
           />
           <img src={shirt} alt="prod-img" />
-        </div>
-        <div className="desc">
-          <p>Apollo Running Short</p>
-          <strong>$50.00</strong>
+          <div className="desc">
+            <p>Apollo Running Short</p>
+            <strong>$50.00</strong>
+          </div>
         </div>
       </div>
     );

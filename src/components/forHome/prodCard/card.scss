@@ -4,6 +4,7 @@
   width: 386px;
   height: 444px;
   padding: 16px;
+  align-items: center;
   display: flex;
   cursor: pointer;
   flex-direction: column;
@@ -19,4 +20,8 @@
   .prod-img {
     position: relative;
   }
+}
+
+.prod-card-top :hover {
+  box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
 }
