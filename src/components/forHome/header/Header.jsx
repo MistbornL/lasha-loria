@@ -5,14 +5,15 @@ import down from "../../../assets/downarrow.png";
 import up from "../../../assets/uparrow.png";
 import cart from "../../../assets/cart.png";
 import CurrencyPop from "../header/currencyPopUp/CurrencyPop";
-import { GET_CURRENCY } from "../../../GraphQL/Queries";
+import { GET_CATEGORIES_AND_CURRENCIES } from "../../../GraphQL/Queries";
 import { useQuery } from "@apollo/client";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
   const [currencies, setCurrencies] = useState([false]);
 
-  const { loading, error, data } = useQuery(GET_CURRENCY);
+  const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
+  console.log(data);
 
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);
@@ -21,11 +22,9 @@ export const Header = () => {
     <header>
       <nav>
         <ul className="header-top-right">
-          <li>WOMEN</li>
-          <li>MEN</li>
-          <li>
-            <span>KIDS</span>
-          </li>
+          {data.categories.map((item) => {
+            return <li>{item.name}</li>;
+          })}
         </ul>
 
         <div style={{ display: "flex" }}>

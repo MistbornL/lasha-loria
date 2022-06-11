@@ -5,7 +5,7 @@ const CurrencyPop = ({ label, symbol, index }) => {
   const [isSelected, setIsSelected] = useState(false);
   return (
     <div key={index} className="pop">
-      <div className="usd">
+      <div>
         <h1 onClick={() => setIsSelected(true)}>
           {symbol} {label}
         </h1>
