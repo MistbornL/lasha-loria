@@ -1,25 +1,17 @@
 import "./currency.scss";
+import React, { useState } from "react";
 
-import React, { Component } from "react";
-
-export default class CurrencyPop extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="pop">
-        <div className="usd">
-          <h1>$ USD</h1>
-        </div>
-        <div className="euro">
-          <h1>€ EUR</h1>
-        </div>
-        <div className="jpy">
-          <h1>¥ JPY</h1>
-        </div>
+const CurrencyPop = ({ label, symbol, index }) => {
+  const [isSelected, setIsSelected] = useState(false);
+  return (
+    <div key={index} className="pop">
+      <div className="usd">
+        <h1 onClick={() => setIsSelected(true)}>
+          {symbol} {label}
+        </h1>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default CurrencyPop;
