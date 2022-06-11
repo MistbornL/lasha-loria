@@ -5,7 +5,7 @@ import ProdCard from "../../components/forHome/prodCard/ProdCard";
 import { useSelector } from "react-redux";
 
 export const Home = () => {
-  const reduxData = useSelector((state) => state);
+  // const reduxData = useSelector((state) => state);
   return (
     <div className="App">
       <Header />

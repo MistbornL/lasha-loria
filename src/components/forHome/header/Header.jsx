@@ -7,15 +7,17 @@ import cart from "../../../assets/cart.png";
 import CurrencyPop from "../header/currencyPopUp/CurrencyPop";
 import { GET_CATEGORIES_AND_CURRENCIES } from "../../../GraphQL/Queries";
 import { useQuery } from "@apollo/client";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { storeQuerry } from "../../../state/actions";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
   const dispatch = useDispatch();
+  const reduxData = useSelector((state) => state);
 
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
   dispatch(storeQuerry(data));
+  console.log(reduxData.data);
 
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);
@@ -24,9 +26,9 @@ export const Header = () => {
     <header>
       <nav>
         <ul className="header-top-right">
-          {data.categories.map((item) => {
+          {/* {data.map((item) => {
             return <li>{item.name}</li>;
-          })}
+          })} */}
         </ul>
 
         <div style={{ display: "flex" }}>
