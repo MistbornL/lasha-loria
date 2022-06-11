@@ -1,21 +1,16 @@
-import { GET_CURR, TOGGLE_CLICK } from "./type";
+import { STORE_QUERRY } from "./type";
 
 const initialState = {
-  currencies: [],
-  click: false,
+  data: [],
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_CURR:
+    case STORE_QUERRY:
       return {
         ...state,
-        currencies: action.payload.currencies,
+        data: action.payload.data,
       };
-    case TOGGLE_CLICK:
-      return {
-        ...state,
-        click: action.payload.click,
-      };
+
     default:
       return state;
   }

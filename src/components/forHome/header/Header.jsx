@@ -7,13 +7,15 @@ import cart from "../../../assets/cart.png";
 import CurrencyPop from "../header/currencyPopUp/CurrencyPop";
 import { GET_CATEGORIES_AND_CURRENCIES } from "../../../GraphQL/Queries";
 import { useQuery } from "@apollo/client";
+import { useDispatch } from "react-redux";
+import { storeQuerry } from "../../../state/actions";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
-  const [currencies, setCurrencies] = useState([false]);
+  const dispatch = useDispatch();
 
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
-  console.log(data);
+  dispatch(storeQuerry(data));
 
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);

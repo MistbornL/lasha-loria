@@ -1,15 +1,8 @@
-import { GET_CURR, TOGGLE_CLICK } from "./type";
+import { STORE_QUERRY } from "./type";
 
-export const storeCurrency = (currencies) => ({
-  type: GET_CURR,
+export const storeQuerry = (data) => ({
+  type: STORE_QUERRY,
   payload: {
-    currencies: currencies,
-  },
-});
-
-export const toggleClick = (click) => ({
-  type: TOGGLE_CLICK,
-  payload: {
-    click,
+    data: data,
   },
 });
