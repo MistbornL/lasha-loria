@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./header.scss";
 import greenPack from "../../../assets/greenpack.png";
 import down from "../../../assets/downarrow.png";
@@ -15,19 +15,21 @@ export const Header = () => {
   const dispatch = useDispatch();
   const reduxData = useSelector((state) => state.store.data);
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
-  dispatch(storeData(data));
-  // console.log(reduxData.data);
 
+  if (loading) return "Loading...";
+  if (error) return `Error! ${error.message}`;
+  dispatch(storeData(data));
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);
   };
+
   return (
     <header>
       <nav>
         <ul className="header-top-right">
-          {/* {data.map((item) => {
-            return <li>{item.name}</li>;
-          })} */}
+          {reduxData.categories.map((item, index) => {
+            return <li key={index}>{item.name}</li>;
+          })}
         </ul>
         <div style={{ display: "flex" }}>
           <img className="header-middle" src={greenPack} alt="logo" />

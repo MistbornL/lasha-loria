@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const storeSlice = createSlice({
   name: "store",
   initialState: {
-    data: [],
+    data: {},
+    // toggleCurrency: false
   },
   reducers: {
     storeData: (state, action) => {
