@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./header.scss";
 import greenPack from "../../../assets/greenpack.png";
 import down from "../../../assets/downarrow.png";
@@ -8,16 +8,15 @@ import CurrencyPop from "../header/currencyPopUp/CurrencyPop";
 import { GET_CATEGORIES_AND_CURRENCIES } from "../../../GraphQL/Queries";
 import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
-import { storeQuerry } from "../../../state/actions";
+import { storeData } from "../../../state/reducer";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
   const dispatch = useDispatch();
-  const reduxData = useSelector((state) => state);
-
+  const reduxData = useSelector((state) => state.store.data);
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
-  dispatch(storeQuerry(data));
-  console.log(reduxData.data);
+  dispatch(storeData(data));
+  // console.log(reduxData.data);
 
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);
@@ -30,11 +29,9 @@ export const Header = () => {
             return <li>{item.name}</li>;
           })} */}
         </ul>
-
         <div style={{ display: "flex" }}>
           <img className="header-middle" src={greenPack} alt="logo" />
         </div>
-
         <div className="currency">
           <p>$</p>
           <span onClick={handleArrow}>
@@ -49,7 +46,6 @@ export const Header = () => {
                 })
               : null}
           </div>
-
           <img src={cart} alt="cart" />
         </div>
       </nav>

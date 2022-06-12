@@ -1,18 +1,16 @@
 import { STORE_QUERRY } from "./type";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  data: [],
-};
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case STORE_QUERRY:
-      return {
-        ...state,
-        data: action.payload.data,
-      };
-
-    default:
-      return state;
-  }
-};
-export default reducer;
+export const storeSlice = createSlice({
+  name: "store",
+  initialState: {
+    data: [],
+  },
+  reducers: {
+    storeData: (state, action) => {
+      state.data = action.payload;
+    },
+  },
+});
+export const { storeData } = storeSlice.actions;
+export default storeSlice;
