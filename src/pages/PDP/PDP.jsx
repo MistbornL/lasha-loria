@@ -27,30 +27,32 @@ const PDP = () => {
       <Header />
       <main>
         <div className="pdp-wrap">
-          <div className="pdp-left">
-            <div>
-              <img
-                style={{ width: "79px", height: "80px" }}
-                src={card.gallery[1]}
-                alt="item"
-              />
-            </div>
-            <div>
-              <img
-                style={{ width: "79px", height: "80px" }}
-                src={card.gallery[2]}
-                alt="item"
-              />
-            </div>
+          {card.galery ? (
+            <div className="pdp-left">
+              <div>
+                <img
+                  style={{ width: "79px", height: "80px" }}
+                  src={card.gallery[1]}
+                  alt="item"
+                />
+              </div>
+              <div>
+                <img
+                  style={{ width: "79px", height: "80px" }}
+                  src={card.gallery[2]}
+                  alt="item"
+                />
+              </div>
 
-            <div>
-              <img
-                style={{ width: "79px", height: "80px" }}
-                src={card.gallery[3]}
-                alt="item"
-              />
+              <div>
+                <img
+                  style={{ width: "79px", height: "80px" }}
+                  src={card.gallery[3]}
+                  alt="item"
+                />
+              </div>
             </div>
-          </div>
+          ) : null}
 
           <div className="pdp-middle">
             <img
@@ -64,18 +66,20 @@ const PDP = () => {
             <div className="desc">
               <h1>{card.name}</h1>
 
-              {/* {[...card.description].join("")} */}
+              <h2>{[...card.description].join("")}</h2>
             </div>
 
             <div className="desc-midd">
               <h1>
                 <strong>size:</strong>
               </h1>
-              <div className="size">
-                {card.attributes[0].items.map((size) => {
-                  return <div>{size.value}</div>;
-                })}
-              </div>
+              {card.attributes[0] ? (
+                <div className="size">
+                  {card.attributes[0].items.map((size) => {
+                    return <div>{size.value}</div>;
+                  })}
+                </div>
+              ) : null}
 
               <div className="color-wrap">
                 <h1>Color</h1>
