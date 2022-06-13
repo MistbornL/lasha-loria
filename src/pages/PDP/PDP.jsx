@@ -1,6 +1,5 @@
 import Header from "../../components/forHome/header/Header";
 import "./pdp.scss";
-import shirt from "../../assets/shirt.png";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
@@ -64,7 +63,8 @@ const PDP = () => {
           <div className="pdp-right">
             <div className="desc">
               <h1>{card.name}</h1>
-              <h2>{card.description}</h2>
+
+              {/* {[...card.description].join("")} */}
             </div>
 
             <div className="desc-midd">
@@ -87,7 +87,10 @@ const PDP = () => {
               </div>
               <div className="price">
                 <h1>Price:</h1>
-                <h2>$50.00</h2>
+                <h2>
+                  {card.prices[0].currency.symbol}
+                  {card.prices[0].amount}
+                </h2>
                 <button>ADD TO CART</button>
               </div>
 
