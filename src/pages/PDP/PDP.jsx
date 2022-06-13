@@ -1,11 +1,10 @@
-import React, { Component } from "react";
 import Header from "../../components/forHome/header/Header";
 import "./pdp.scss";
 import shirt from "../../assets/shirt.png";
 
 import React from "react";
 
-export const PDP = () => {
+const PDP = () => {
   return (
     <div className="APP">
       <Header />
@@ -89,3 +88,5 @@ export const PDP = () => {
     </div>
   );
 };
+
+export default PDP;

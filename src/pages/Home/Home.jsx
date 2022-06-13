@@ -3,13 +3,18 @@ import "./home.scss";
 import React from "react";
 import ProdCard from "../../components/forHome/prodCard/ProdCard";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_CATEGORIES } from "../../GraphQL/Queries";
+import { storeProduct } from "../../state/reducer";
 
 export const Home = () => {
+  const dispatch = useDispatch();
   const { loading, error, data } = useQuery(GET_ALL_CATEGORIES);
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
+
+  dispatch(storeProduct(data.category.product));
   return (
     <div className="App">
       <Header />
