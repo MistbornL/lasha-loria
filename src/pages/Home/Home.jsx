@@ -13,8 +13,7 @@ export const Home = () => {
   const { loading, error, data } = useQuery(GET_ALL_CATEGORIES);
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
-
-  dispatch(storeProduct(data.category.product));
+  dispatch(storeProduct(data.category.products));
   return (
     <div className="App">
       <Header />

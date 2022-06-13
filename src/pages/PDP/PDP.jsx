@@ -1,10 +1,25 @@
 import Header from "../../components/forHome/header/Header";
 import "./pdp.scss";
 import shirt from "../../assets/shirt.png";
-
-import React from "react";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 
 const PDP = () => {
+  const params = useParams();
+  const [card, setCard] = useState({ id: "" });
+  const product = useSelector((state) => state.store.product);
+  // console.log(product);
+
+  useEffect(() => {
+    product.map((item) => {
+      if (item.id.toString() === params.id) {
+        setCard(item);
+      }
+    });
+  });
+  console.log(card);
+
   return (
     <div className="APP">
       <Header />
@@ -14,14 +29,14 @@ const PDP = () => {
             <div>
               <img
                 style={{ width: "79px", height: "80px" }}
-                src={shirt}
+                src={card.gallery[1]}
                 alt="item"
               />
             </div>
             <div>
               <img
                 style={{ width: "79px", height: "80px" }}
-                src={shirt}
+                src={card.gallery[2]}
                 alt="item"
               />
             </div>
@@ -29,7 +44,7 @@ const PDP = () => {
             <div>
               <img
                 style={{ width: "79px", height: "80px" }}
-                src={shirt}
+                src={card.gallery[3]}
                 alt="item"
               />
             </div>
@@ -38,15 +53,15 @@ const PDP = () => {
           <div className="pdp-middle">
             <img
               style={{ width: "610px", height: "511px" }}
-              src={shirt}
+              src={card.gallery[0]}
               alt="shirt"
             />
           </div>
 
           <div className="pdp-right">
             <div className="desc">
-              <h1>Appolo</h1>
-              <h2>running short</h2>
+              <h1>{card.name}</h1>
+              <h2>{card.description}</h2>
             </div>
 
             <div className="desc-midd">
@@ -54,10 +69,9 @@ const PDP = () => {
                 <strong>size:</strong>
               </h1>
               <div className="size">
-                <div>XS</div>
-                <div>S</div>
-                <div>M</div>
-                <div>L</div>
+                {card.attributes.items.map((size) => {
+                  return <div>{size.value}</div>;
+                })}
               </div>
 
               <div className="color-wrap">
