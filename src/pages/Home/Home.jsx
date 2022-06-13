@@ -26,6 +26,7 @@ export const Home = () => {
                 price={item.prices[0].amount}
                 symbol={item.prices[0].currency.symbol}
                 img={item.gallery[0]}
+                id={item.id}
               />
             );
           })}
