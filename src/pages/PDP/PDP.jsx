@@ -7,20 +7,23 @@ import React, { useEffect, useState } from "react";
 
 const PDP = () => {
   const params = useParams();
-  const [card, setCard] = useState({ id: "" });
+  const [card, setCard] = useState({});
   const product = useSelector((state) => state.store.product);
-  // console.log(product);
+  const [isLoading, seIsLoading] = useState(true);
+  console.log(card);
 
   useEffect(() => {
+    seIsLoading(false);
     product.map((item) => {
       if (item.id.toString() === params.id) {
         setCard(item);
       }
     });
   });
-  console.log(card);
 
-  return (
+  return isLoading ? (
+    <h1>"loading"</h1>
+  ) : (
     <div className="APP">
       <Header />
       <main>
@@ -69,7 +72,7 @@ const PDP = () => {
                 <strong>size:</strong>
               </h1>
               <div className="size">
-                {card.attributes.items.map((size) => {
+                {card.attributes[0].items.map((size) => {
                   return <div>{size.value}</div>;
                 })}
               </div>
