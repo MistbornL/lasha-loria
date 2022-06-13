@@ -11,3 +11,37 @@ export const GET_CATEGORIES_AND_CURRENCIES = gql`
     }
   }
 `;
+
+export const GET_ALL_CATEGORIES = gql`
+  query {
+    category(input: { title: "all" }) {
+      name
+      products {
+        id
+        name
+        inStock
+        gallery
+        description
+        category
+        attributes {
+          id
+          name
+          type
+          items {
+            displayValue
+            value
+            id
+          }
+        }
+        prices {
+          currency {
+            label
+            symbol
+          }
+          amount
+        }
+        brand
+      }
+    }
+  }
+`;

@@ -3,9 +3,13 @@ import "./home.scss";
 import React from "react";
 import ProdCard from "../../components/forHome/prodCard/ProdCard";
 import { useSelector } from "react-redux";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_CATEGORIES } from "../../GraphQL/Queries";
 
 export const Home = () => {
-  // const reduxData = useSelector((state) => state);
+  const { loading, error, data } = useQuery(GET_ALL_CATEGORIES);
+  if (loading) return "Loading...";
+  if (error) return `Error! ${error.message}`;
   return (
     <div className="App">
       <Header />
@@ -15,7 +19,16 @@ export const Home = () => {
 
       <main>
         <section className="prod-card">
-          <ProdCard />
+          {data.category.products.map((item) => {
+            return (
+              <ProdCard
+                name={item.name}
+                price={item.prices[0].amount}
+                symbol={item.prices[0].currency.symbol}
+                img={item.gallery[0]}
+              />
+            );
+          })}
         </section>
       </main>
     </div>

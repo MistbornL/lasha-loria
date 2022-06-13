@@ -8,7 +8,7 @@ import CurrencyPop from "../header/currencyPopUp/CurrencyPop";
 import { GET_CATEGORIES_AND_CURRENCIES } from "../../../GraphQL/Queries";
 import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
-import { storeData, storeCattegories } from "../../../state/reducer";
+import { storeData, storeCategories } from "../../../state/reducer";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
@@ -21,9 +21,10 @@ export const Header = () => {
   if (error) return `Error! ${error.message}`;
   dispatch(storeData(data));
   // data.categories.map((item) => {
-  //   dispatch(storeCattegories({ ...item, isSelected: false }));
+  //   dispatch(storeCategories(item));
   // });
-  console.log(storeCat);
+  // console.log(storeCat);
+
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);
   };

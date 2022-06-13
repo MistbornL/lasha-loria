@@ -6,16 +6,15 @@ export const storeSlice = createSlice({
   initialState: {
     data: {},
     categories: {},
-    // toggleCurrency: false
   },
   reducers: {
     storeData: (state, action) => {
       state.data = action.payload;
     },
-    storeCattegories: (state, action) => {
-      state.categories = action.payload;
+    storeCategories: (state, action) => {
+      state.categories = { ...action.payload, isSelected: false };
     },
   },
 });
-export const { storeData, storeCattegories } = storeSlice.actions;
+export const { storeData, storeCategories } = storeSlice.actions;
 export default storeSlice;
