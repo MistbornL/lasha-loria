@@ -1,8 +1,6 @@
 @import "../../../variables.scss";
 
 .prod-card-top {
-  width: 386px;
-  height: 444px;
   padding: 16px;
   align-items: center;
   display: flex;
@@ -24,4 +22,34 @@
 
 .prod-card-top :hover {
   box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+}
+
+.out-of-stock {
+  width: 386px;
+  height: 444px;
+  padding: 16px;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  opacity: 0.5;
+  p {
+    @include basic-font(300, 18px, 160%);
+  }
+
+  span {
+    @include basic-font(500, 18px, 160%, rgb(0, 0, 0));
+  }
+
+  .prod-img {
+    position: relative;
+  }
+}
+
+.out-h1 {
+  position: absolute;
+  @include basic-font(400, 24px, 160%, #8d8f9a);
+  left: 20%;
+  top: 0%;
+  margin-top: 170px;
 }

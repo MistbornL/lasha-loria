@@ -3,12 +3,12 @@ import greenCart from "../../../assets/cartInGreen.png";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const ProdCard = ({ name, img, price, symbol, id }) => {
+const ProdCard = ({ name, img, price, symbol, id, inStock }) => {
   const [isShown, setIsShown] = useState(false);
 
   return (
     <div
-      className="prod-card-top"
+      className={inStock ? "prod-card-top" : "out-of-stock"}
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
@@ -25,11 +25,26 @@ const ProdCard = ({ name, img, price, symbol, id }) => {
           alt={isShown ? "greenCart" : null}
         />
         <Link to={`/PDP/${id}`}>
-          <img
-            style={{ width: "354px", height: "330px" }}
-            src={img}
-            alt="prod-img"
-          />
+          {inStock ? (
+            <img
+              style={{ width: "354px", height: "330px" }}
+              src={img}
+              alt="prod-img"
+            />
+          ) : (
+            <div>
+              <img
+                style={{
+                  width: "354px",
+                  height: "330px",
+                  position: "relative",
+                }}
+                src={img}
+                alt="prod-img"
+              />
+              <h1 className="out-h1">OUT OF STOCK</h1>
+            </div>
+          )}
         </Link>
         <div className="desc">
           <p>{name}</p>

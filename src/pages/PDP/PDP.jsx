@@ -83,6 +83,7 @@ const PDP = () => {
 
               <div className="color-wrap">
                 <h1>Color</h1>
+                {/* {attributes.color} */}
                 <div className="color">
                   <div style={{ background: "#D3D2D5" }} className="grey"></div>
                   <div style={{ background: "black" }} className="black"></div>
