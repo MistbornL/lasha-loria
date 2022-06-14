@@ -17,6 +17,7 @@ const PDP = () => {
       if (item.id.toString() === params.id) {
         setCard(item);
       }
+      return item;
     });
   });
 
