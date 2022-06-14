@@ -8,18 +8,18 @@ const PDP = () => {
   const params = useParams();
   const [card, setCard] = useState({});
   const product = useSelector((state) => state.store.product);
-  const [isLoading, seIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   console.log(card);
 
   useEffect(() => {
-    seIsLoading(false);
+    setIsLoading(false);
     product.map((item) => {
       if (item.id.toString() === params.id) {
         setCard(item);
       }
       return item;
     });
-  });
+  }, [params.id, product]);
 
   return isLoading ? (
     <h1>"loading"</h1>

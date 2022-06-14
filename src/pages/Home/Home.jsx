@@ -2,7 +2,7 @@ import Header from "../../components/forHome/header/Header";
 import "./home.scss";
 import React from "react";
 import ProdCard from "../../components/forHome/prodCard/ProdCard";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_CATEGORIES } from "../../GraphQL/Queries";
