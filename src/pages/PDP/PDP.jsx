@@ -9,7 +9,6 @@ const PDP = () => {
   const [card, setCard] = useState({});
   const product = useSelector((state) => state.store.product);
   const [isLoading, setIsLoading] = useState(true);
-  console.log(card);
 
   useEffect(() => {
     setIsLoading(false);
@@ -72,7 +71,6 @@ const PDP = () => {
                   dangerouslySetInnerHTML={{ __html: card.description }}
                 ></div>
               </h2>
-              {console.log(card.description)}
             </div>
 
             <div className="desc-midd">
@@ -108,7 +106,10 @@ const PDP = () => {
               </div>
 
               <div className="color-wrap">
-                <h1>Color</h1>
+                {card.attributes.filter((item) => item.name === "Color") ===
+                [] ? (
+                  <h1>Color</h1>
+                ) : null}
                 <div className="color">
                   {card.attributes.map((item) => {
                     if (item.name === "Color") {
@@ -122,6 +123,7 @@ const PDP = () => {
                         );
                       });
                     }
+                    return undefined;
                   })}
                 </div>
               </div>
