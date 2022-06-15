@@ -76,38 +76,39 @@ const PDP = () => {
             </div>
 
             <div className="desc-midd">
-              {card.attributes
-                .map((item) => {
-                  if (item.name === "Size") {
-                    return item.items.map((size, index) => {
-                      return (
-                        <Fragment key={index}>
-                          <h1>
-                            <strong>size:</strong>
-                          </h1>
-                          <div className="size">
+              <h1>
+                <strong>size:</strong>
+              </h1>
+              <div className="size">
+                {card.attributes
+                  .map((item) => {
+                    if (item.name === "Size") {
+                      return item.items.map((size, index) => {
+                        return (
+                          <Fragment key={index}>
                             <div>{size.value} </div>
-                          </div>
-                        </Fragment>
-                      );
-                    });
-                  } else if (item.name === "Capacity") {
-                    return item.items.map((cap, index) => {
-                      return (
-                        <Fragment key={index}>
-                          <h1>
-                            <strong>size:</strong>
-                          </h1>
-                          <div className="size">
-                            <div>{cap.value} </div>
-                          </div>
-                        </Fragment>
-                      );
-                    });
-                  }
-                  return undefined;
-                })
-                .filter((item) => item !== undefined)}
+                          </Fragment>
+                        );
+                      });
+                    } else if (item.name === "Capacity") {
+                      return item.items.map((cap, index) => {
+                        return (
+                          <Fragment key={index}>
+                            <h1>
+                              <strong>size:</strong>
+                            </h1>
+                            <div className="size">
+                              <div>{cap.value} </div>
+                            </div>
+                          </Fragment>
+                        );
+                      });
+                    }
+
+                    return undefined;
+                  })
+                  .filter((item) => item !== undefined)}
+              </div>
 
               <div className="color-wrap">
                 <h1>Color</h1>
