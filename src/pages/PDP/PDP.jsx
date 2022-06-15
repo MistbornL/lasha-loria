@@ -109,11 +109,20 @@ const PDP = () => {
 
               <div className="color-wrap">
                 <h1>Color</h1>
-                {/* {attributes.color} */}
                 <div className="color">
-                  <div style={{ background: "#D3D2D5" }} className="grey"></div>
-                  <div style={{ background: "black" }} className="black"></div>
-                  <div style={{ background: "green" }} className="green"></div>
+                  {card.attributes.map((item) => {
+                    if (item.name === "Color") {
+                      return item.items.map((color, index) => {
+                        const colorValue = color.value;
+                        return (
+                          <div
+                            key={index}
+                            style={{ background: colorValue }}
+                          ></div>
+                        );
+                      });
+                    }
+                  })}
                 </div>
               </div>
               <div className="price">
