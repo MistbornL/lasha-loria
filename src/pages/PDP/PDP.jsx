@@ -74,9 +74,12 @@ const PDP = () => {
             </div>
 
             <div className="desc-midd">
-              <h1>
-                <strong>size:</strong>
-              </h1>
+              {card.attributes.map((item) => {
+                if (item.name === "Color") {
+                  return <h1>Color</h1>;
+                }
+              })}
+
               <div className="size">
                 {card.attributes
                   .map((item) => {
@@ -106,10 +109,12 @@ const PDP = () => {
               </div>
 
               <div className="color-wrap">
-                {card.attributes.filter((item) => item.name === "Color") ===
-                [] ? (
-                  <h1>Color</h1>
-                ) : null}
+                {card.attributes.map((item) => {
+                  if (item.name === "Color") {
+                    return <h1>Color</h1>;
+                  }
+                })}
+
                 <div className="color">
                   {card.attributes.map((item) => {
                     if (item.name === "Color") {
