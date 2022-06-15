@@ -14,6 +14,7 @@ export const Home = () => {
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
   dispatch(storeProduct(data.category.products));
+
   return (
     <div className="App">
       <Header />

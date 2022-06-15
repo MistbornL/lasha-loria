@@ -2,7 +2,7 @@ import Header from "../../components/forHome/header/Header";
 import "./pdp.scss";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 const PDP = () => {
   const params = useParams();
@@ -67,26 +67,47 @@ const PDP = () => {
             <div className="desc">
               <h1>{card.name}</h1>
 
-              <h2>{[...card.description].join("")}</h2>
+              <h2>
+                <div
+                  dangerouslySetInnerHTML={{ __html: card.description }}
+                ></div>
+              </h2>
+              {console.log(card.description)}
             </div>
 
             <div className="desc-midd">
-              <h1>
-                <strong>size:</strong>
-              </h1>
-              {card.attributes.map((item) => {
-                if (item.name === "Size") {
-                  item.items.map((size) => {
-                    console.log(size.value);
-                    return (
-                      <div className="size">
-                        <div>{size.value} </div>
-                      </div>
-                    );
-                  });
-                }
-                // return item;
-              })}
+              {card.attributes
+                .map((item) => {
+                  if (item.name === "Size") {
+                    return item.items.map((size, index) => {
+                      return (
+                        <Fragment key={index}>
+                          <h1>
+                            <strong>size:</strong>
+                          </h1>
+                          <div className="size">
+                            <div>{size.value} </div>
+                          </div>
+                        </Fragment>
+                      );
+                    });
+                  } else if (item.name === "Capacity") {
+                    return item.items.map((cap, index) => {
+                      return (
+                        <Fragment key={index}>
+                          <h1>
+                            <strong>size:</strong>
+                          </h1>
+                          <div className="size">
+                            <div>{cap.value} </div>
+                          </div>
+                        </Fragment>
+                      );
+                    });
+                  }
+                  return undefined;
+                })
+                .filter((item) => item !== undefined)}
 
               <div className="color-wrap">
                 <h1>Color</h1>
