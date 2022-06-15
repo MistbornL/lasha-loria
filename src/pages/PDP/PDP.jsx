@@ -94,9 +94,6 @@ const PDP = () => {
                       return item.items.map((cap, index) => {
                         return (
                           <Fragment key={index}>
-                            <h1>
-                              <strong>size:</strong>
-                            </h1>
                             <div className="size">
                               <div>{cap.value} </div>
                             </div>
