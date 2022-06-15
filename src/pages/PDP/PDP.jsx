@@ -74,13 +74,19 @@ const PDP = () => {
               <h1>
                 <strong>size:</strong>
               </h1>
-              {card.attributes[0] ? (
-                <div className="size">
-                  {card.attributes[0].items.map((size) => {
-                    return <div>{size.value}</div>;
-                  })}
-                </div>
-              ) : null}
+              {card.attributes.map((item) => {
+                if (item.name === "Size") {
+                  item.items.map((size) => {
+                    console.log(size.value);
+                    return (
+                      <div className="size">
+                        <div>{size.value} </div>
+                      </div>
+                    );
+                  });
+                }
+                // return item;
+              })}
 
               <div className="color-wrap">
                 <h1>Color</h1>
