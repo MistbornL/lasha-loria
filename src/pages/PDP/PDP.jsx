@@ -1,14 +1,20 @@
 import Header from "../../components/forHome/header/Header";
 import "./pdp.scss";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React, { Fragment, useEffect, useState } from "react";
+import { storeToCart } from "../../state/reducer";
 
 const PDP = () => {
   const params = useParams();
   const [card, setCard] = useState({});
   const product = useSelector((state) => state.store.product);
   const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
+
+  const handleButton = () => {
+    dispatch(storeToCart(card));
+  };
 
   useEffect(() => {
     setIsLoading(false);
@@ -27,7 +33,7 @@ const PDP = () => {
       <Header />
       <main>
         <div className="pdp-wrap">
-          {card.galery ? (
+          {card.gallery ? (
             <div className="pdp-left">
               <div>
                 <img
@@ -53,7 +59,6 @@ const PDP = () => {
               </div>
             </div>
           ) : null}
-
           <div className="pdp-middle">
             <img
               style={{ width: "610px", height: "511px" }}
@@ -61,7 +66,6 @@ const PDP = () => {
               alt="shirt"
             />
           </div>
-
           <div className="pdp-right">
             <div className="desc">
               <h1>{card.name}</h1>
@@ -74,22 +78,9 @@ const PDP = () => {
             </div>
 
             <div className="desc-midd">
-              {card.attributes.map((item) => {
-                if (item.name === "Size") {
-                  return (
-                    <h1>
-                      <strong>Size: </strong>
-                    </h1>
-                  );
-                } else if (item.name === "Capacity") {
-                  return (
-                    <h1>
-                      <strong>Capacity</strong>
-                    </h1>
-                  );
-                }
-                return item;
-              })}
+              <h1>
+                <strong>Size: </strong>
+              </h1>
 
               <div className="size">
                 {card.attributes
@@ -120,16 +111,7 @@ const PDP = () => {
               </div>
 
               <div className="color-wrap">
-                {card.attributes.map((item) => {
-                  if (item.name === "Color") {
-                    return (
-                      <h1>
-                        <strong>color: </strong>
-                      </h1>
-                    );
-                  }
-                })}
-
+                <h1>color</h1>
                 <div className="color">
                   {card.attributes.map((item) => {
                     if (item.name === "Color") {
