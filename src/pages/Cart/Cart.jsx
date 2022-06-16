@@ -1,7 +1,13 @@
-import React, { Component } from "react";
 import Header from "../../components/forHome/header/Header";
 import "./cart.scss";
 import shirt from "../../assets/shirt.png";
+
+import React from "react";
+
+export const Cart = () => {
+  return <div>Cart</div>;
+};
+
 export default class Card extends Component {
   constructor() {
     super();

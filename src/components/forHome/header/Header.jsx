@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./header.scss";
 import greenPack from "../../../assets/greenpack.png";
 import down from "../../../assets/downarrow.png";
@@ -19,7 +19,7 @@ export const Header = () => {
 
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
-  dispatch(storeData(data));
+
   // data.categories.map((item) => {
   //   dispatch(storeCategories(item));
   // });

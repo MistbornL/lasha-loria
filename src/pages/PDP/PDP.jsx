@@ -9,11 +9,14 @@ const PDP = () => {
   const params = useParams();
   const [card, setCard] = useState({});
   const product = useSelector((state) => state.store.product);
+  const cart = useSelector((state) => state.store.cart);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
-  const handleButton = () => {
+  const handleButton = (e) => {
+    e.preventDefault();
     dispatch(storeToCart(card));
+    console.log(cart);
   };
 
   useEffect(() => {
@@ -24,7 +27,7 @@ const PDP = () => {
       }
       return item;
     });
-  }, [params.id, product]);
+  }, [params.id, product, cart]);
 
   return isLoading ? (
     <h1>"loading"</h1>
@@ -135,7 +138,7 @@ const PDP = () => {
                   {card.prices[0].currency.symbol}
                   {card.prices[0].amount}
                 </h2>
-                <button>ADD TO CART</button>
+                <button onClick={handleButton}>ADD TO CART</button>
               </div>
 
               <div className="desc-bottom">
