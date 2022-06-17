@@ -2,10 +2,12 @@ import Header from "../../components/forHome/header/Header";
 import "./cart.scss";
 import shirt from "../../assets/shirt.png";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
   const [counter, setCounter] = useState(1);
+  const cartData = useSelector((state) => state.store.cart);
 
   const handleIncr = () => {
     setCounter(counter + 1);
@@ -13,6 +15,10 @@ const Cart = () => {
   const handleDecr = () => {
     setCounter(counter - 1);
   };
+
+  useEffect(() => {
+    console.log(cartData);
+  });
   return (
     <div className="App">
       <Header />

@@ -36,7 +36,7 @@ const PDP = () => {
       <Header />
       <main>
         <div className="pdp-wrap">
-          {card.gallery ? (
+          {card.gallery.length > 1 ? (
             <div className="pdp-left">
               <div>
                 <img
