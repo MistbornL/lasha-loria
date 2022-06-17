@@ -17,6 +17,9 @@ export const storeSlice = createSlice({
       brand: "",
     },
     cart: {},
+    selectAll: false,
+    selectTech: false,
+    selectCloth: false,
   },
   reducers: {
     storeData: (state, action) => {
@@ -31,8 +34,30 @@ export const storeSlice = createSlice({
     storeToCart: (state, action) => {
       state.cart = action.payload;
     },
+    setSelectAll: (state) => {
+      state.selectAll = true;
+      state.selectCloth = false;
+      state.selectTech = false;
+    },
+    setSelectTech: (state) => {
+      state.selectAll = false;
+      state.selectCloth = false;
+      state.selectTech = true;
+    },
+    setSelectCloth: (state) => {
+      state.selectAll = false;
+      state.selectCloth = true;
+      state.selectTech = false;
+    },
   },
 });
-export const { storeData, storeCategories, storeProduct, storeToCart } =
-  storeSlice.actions;
+export const {
+  storeData,
+  storeCategories,
+  storeProduct,
+  storeToCart,
+  setSelectAll,
+  setSelectTech,
+  setSelectCloth,
+} = storeSlice.actions;
 export default storeSlice;

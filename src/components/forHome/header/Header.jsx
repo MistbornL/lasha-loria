@@ -8,22 +8,24 @@ import CurrencyPop from "../header/currencyPopUp/CurrencyPop";
 import { GET_CATEGORIES_AND_CURRENCIES } from "../../../GraphQL/Queries";
 import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
-import { storeData, storeCategories } from "../../../state/reducer";
+import {
+  storeData,
+  storeCategories,
+  storeProduct,
+  setSelectAll,
+  setSelectTech,
+  setSelectCloth,
+} from "../../../state/reducer";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
   const dispatch = useDispatch();
   const reduxData = useSelector((state) => state.store.data);
-  const storeCat = useSelector((state) => state.store.categories);
-  const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
 
+  const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
   dispatch(storeData(data));
-  // data.categories.map((item) => {
-  //   dispatch(storeCategories(item));
-  // });
-  // console.log(storeCat);
 
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);
@@ -34,7 +36,23 @@ export const Header = () => {
       <nav>
         <ul className="header-top-right">
           {reduxData.categories.map((item, index) => {
-            return <li key={index}>{item.name}</li>;
+            return (
+              <li
+                // style={selectAll ? { color: "#5ece7b" } : undefined}
+                onClick={() => {
+                  if (item.name === "all") {
+                    dispatch(setSelectAll());
+                  } else if (item.name === "tech") {
+                    dispatch(setSelectTech());
+                  } else if (item.name === "clothes") {
+                    dispatch(setSelectCloth());
+                  }
+                }}
+                key={index}
+              >
+                {item.name}
+              </li>
+            );
           })}
         </ul>
         <div style={{ display: "flex" }}>

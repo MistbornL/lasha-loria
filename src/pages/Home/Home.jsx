@@ -3,7 +3,7 @@ import "./home.scss";
 import React from "react";
 import ProdCard from "../../components/forHome/prodCard/ProdCard";
 // import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_CATEGORIES } from "../../GraphQL/Queries";
 import { storeProduct } from "../../state/reducer";
@@ -11,6 +11,8 @@ import { storeProduct } from "../../state/reducer";
 export const Home = () => {
   const dispatch = useDispatch();
   const { loading, error, data } = useQuery(GET_ALL_CATEGORIES);
+  const selecteds = useSelector((state) => state.store);
+  console.log(selecteds);
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
   dispatch(storeProduct(data.category.products));
@@ -19,7 +21,15 @@ export const Home = () => {
     <div className="App">
       <Header />
       <div className="category-name">
-        <h1>Category Name</h1>
+        {selecteds.selectAll ? (
+          <h1>all</h1>
+        ) : selecteds.selectTech ? (
+          <h1>tech</h1>
+        ) : selecteds.selectCloth ? (
+          <h1>clothes</h1>
+        ) : (
+          <h1>all</h1>
+        )}
       </div>
 
       <main>

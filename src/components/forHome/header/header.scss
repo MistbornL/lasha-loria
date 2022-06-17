@@ -7,18 +7,22 @@ header {
   }
 }
 
+.selected {
+  li {
+    color: #5ece7b;
+  }
+}
+
 .header-top-right {
   display: flex;
   gap: 32px;
   li {
+    cursor: pointer;
     list-style: none;
     @include basic-font(600, 16px, 120%);
     height: 80px;
     display: flex;
     align-items: center;
-    span {
-      color: #5ece7b;
-    }
   }
   .header-middle {
     width: 200px;
