@@ -21,17 +21,8 @@ export const Home = () => {
     <div className="App">
       <Header />
       <div className="category-name">
-        {selecteds.selectAll ? (
-          <h1>all</h1>
-        ) : selecteds.selectTech ? (
-          <h1>tech</h1>
-        ) : selecteds.selectCloth ? (
-          <h1>clothes</h1>
-        ) : (
-          <h1>all</h1>
-        )}
+        <h1>{selecteds.name}</h1>
       </div>
-
       <main>
         <section className="prod-card">
           {data.category.products.map((item) => {

@@ -17,6 +17,7 @@ export const storeSlice = createSlice({
       brand: "",
     },
     cart: {},
+    name: "all",
     selectAll: false,
     selectTech: false,
     selectCloth: false,
@@ -49,6 +50,9 @@ export const storeSlice = createSlice({
       state.selectCloth = true;
       state.selectTech = false;
     },
+    setName: (state, action) => {
+      state.name = action.payload;
+    },
   },
 });
 export const {
@@ -59,5 +63,6 @@ export const {
   setSelectAll,
   setSelectTech,
   setSelectCloth,
+  setName,
 } = storeSlice.actions;
 export default storeSlice;

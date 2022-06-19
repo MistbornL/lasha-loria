@@ -15,6 +15,7 @@ import {
   setSelectAll,
   setSelectTech,
   setSelectCloth,
+  setName,
 } from "../../../state/reducer";
 import { Link } from "react-router-dom";
 
@@ -51,7 +52,14 @@ export const Header = () => {
                 }}
                 key={index}
               >
-                <Link to={`/${item.name}`}>{item.name}</Link>
+                <Link
+                  onClick={() => {
+                    dispatch(setName(item.name));
+                  }}
+                  to={`/${item.name}`}
+                >
+                  {item.name}
+                </Link>
               </li>
             );
           })}
