@@ -5,11 +5,7 @@ import ProdCard from "../../components/forHome/prodCard/ProdCard";
 // import { useSelector } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@apollo/client";
-import {
-  GET_ALL_CATEGORIES,
-  GET_TECH_CATEGORIES,
-  GET_CLOTHES_CATEGORIES,
-} from "../../GraphQL/Queries";
+import { GET_ALL_CATEGORIES } from "../../GraphQL/Queries";
 import { storeProduct } from "../../state/reducer";
 
 export const Home = () => {

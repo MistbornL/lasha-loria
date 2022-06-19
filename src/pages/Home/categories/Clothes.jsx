@@ -1,6 +1,8 @@
 import React from "react";
 import { GET_CLOTHES_CATEGORIES } from "../../../GraphQL/Queries";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useQuery } from "@apollo/client";
+import Header from "../../../components/forHome/header/Header";
 export const Clothes = () => {
   const dispatch = useDispatch();
   const { loading, error, data } = useQuery(GET_CLOTHES_CATEGORIES);
