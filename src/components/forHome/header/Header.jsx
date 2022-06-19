@@ -12,9 +12,6 @@ import {
   storeData,
   storeCategories,
   storeProduct,
-  setSelectAll,
-  setSelectTech,
-  setSelectCloth,
   setName,
 } from "../../../state/reducer";
 import { Link } from "react-router-dom";
@@ -41,15 +38,6 @@ export const Header = () => {
             return (
               <li
                 // style={selectAll ? { color: "#5ece7b" } : undefined}
-                onClick={() => {
-                  if (item.name === "all") {
-                    dispatch(setSelectAll());
-                  } else if (item.name === "tech") {
-                    dispatch(setSelectTech());
-                  } else if (item.name === "clothes") {
-                    dispatch(setSelectCloth());
-                  }
-                }}
                 key={index}
               >
                 <Link
