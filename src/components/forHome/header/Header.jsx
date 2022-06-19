@@ -8,12 +8,7 @@ import CurrencyPop from "../header/currencyPopUp/CurrencyPop";
 import { GET_CATEGORIES_AND_CURRENCIES } from "../../../GraphQL/Queries";
 import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  storeData,
-  storeCategories,
-  storeProduct,
-  setName,
-} from "../../../state/reducer";
+import { storeData, setName } from "../../../state/reducer";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
