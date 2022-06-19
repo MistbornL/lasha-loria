@@ -19,10 +19,14 @@ header {
   li {
     cursor: pointer;
     list-style: none;
-    @include basic-font(600, 16px, 120%);
     height: 80px;
     display: flex;
     align-items: center;
+
+    a {
+      @include basic-font(600, 16px, 120%);
+      text-decoration: none;
+    }
   }
   .header-middle {
     width: 200px;
