@@ -15,8 +15,6 @@ import { storeProduct } from "../../state/reducer";
 export const Home = () => {
   const dispatch = useDispatch();
   const { loading, error, data } = useQuery(GET_ALL_CATEGORIES);
-  const { tech } = useQuery(GET_TECH_CATEGORIES);
-  const { clothes } = useQuery(GET_CLOTHES_CATEGORIES);
   const selecteds = useSelector((state) => state.store);
 
   if (loading) return "Loading...";
