@@ -16,6 +16,7 @@ import {
   setSelectTech,
   setSelectCloth,
 } from "../../../state/reducer";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
@@ -50,7 +51,7 @@ export const Header = () => {
                 }}
                 key={index}
               >
-                {item.name}
+                <Link to={item.name}>{item.name}</Link>
               </li>
             );
           })}
