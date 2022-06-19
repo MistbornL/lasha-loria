@@ -51,7 +51,7 @@ export const Header = () => {
                 }}
                 key={index}
               >
-                <Link to={item.name}>{item.name}</Link>
+                <Link to={`/${item.name}`}>{item.name}</Link>
               </li>
             );
           })}
