@@ -27,7 +27,7 @@ const PDP = () => {
       }
       return item;
     });
-  }, [params.id, product, cart]);
+  }, [params.id, product]);
 
   return isLoading ? (
     <h1>"loading"</h1>

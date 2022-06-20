@@ -18,6 +18,7 @@ export const storeSlice = createSlice({
     },
     cart: {},
     name: "all",
+    currencies: [],
   },
   reducers: {
     storeData: (state, action) => {
@@ -36,6 +37,9 @@ export const storeSlice = createSlice({
     setName: (state, action) => {
       state.name = action.payload;
     },
+    storeCurrencies: (state, action) => {
+      state.currencies = action.payload;
+    },
   },
 });
 export const {
@@ -43,9 +47,7 @@ export const {
   storeCategories,
   storeProduct,
   storeToCart,
-  setSelectAll,
-  setSelectTech,
-  setSelectCloth,
   setName,
+  storeCurrencies,
 } = storeSlice.actions;
 export default storeSlice;

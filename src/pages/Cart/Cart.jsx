@@ -16,9 +16,7 @@ const Cart = () => {
     setCounter(counter - 1);
   };
 
-  useEffect(() => {
-    console.log(cartData);
-  });
+  useEffect(() => {});
   return (
     <div className="App">
       <Header />
