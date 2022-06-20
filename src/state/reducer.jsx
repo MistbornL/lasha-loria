@@ -4,7 +4,7 @@ export const storeSlice = createSlice({
   name: "store",
   initialState: {
     data: { categories: [], currencies: [] },
-    categories: { name: "", product: [] },
+    categories: [],
     product: {
       id: "",
       name: "",
@@ -25,7 +25,10 @@ export const storeSlice = createSlice({
       state.data = action.payload;
     },
     storeCategories: (state, action) => {
-      state.categories = { ...action.payload, isSelected: false };
+      state.categories = state.categories = action.payload.map((item) => ({
+        ...item,
+        isSelected: false,
+      }));
     },
     storeProduct: (state, action) => {
       state.product = action.payload;

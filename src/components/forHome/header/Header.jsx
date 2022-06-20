@@ -8,13 +8,18 @@ import CurrencyPop from "../header/currencyPopUp/CurrencyPop";
 import { GET_CATEGORIES_AND_CURRENCIES } from "../../../GraphQL/Queries";
 import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
-import { storeData, setName, storeCurrencies } from "../../../state/reducer";
+import {
+  storeData,
+  setName,
+  storeCurrencies,
+  storeCategories,
+} from "../../../state/reducer";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
   const dispatch = useDispatch();
-  const reduxData = useSelector((state) => state.store.data);
+  const categories = useSelector((state) => state.store.categories);
   const currency = useSelector((state) => state.store.currencies);
 
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
@@ -26,6 +31,7 @@ export const Header = () => {
   useEffect(() => {
     if (data) {
       dispatch(storeData(data));
+      dispatch(storeCategories(data.categories));
       dispatch(storeCurrencies(data.currencies));
     }
   }, [loading, data]);
@@ -34,7 +40,7 @@ export const Header = () => {
     <header>
       <nav>
         <ul className="header-top-right">
-          {reduxData.categories.map((item, index) => {
+          {categories.map((item, index) => {
             return (
               <li key={index}>
                 <Link
@@ -62,16 +68,9 @@ export const Header = () => {
           </span>
           <div className="popup">
             {toggleArrow
-              ? currency.map(({ item, index }) => {
+              ? currency.map(({ item }) => {
                   console.log(item);
-                  return (
-                    <CurrencyPop
-                      label={item.label}
-                      symbol={item.symbol}
-                      index={index}
-                      selected={item.isSelected}
-                    />
-                  );
+                  return <CurrencyPop item={item} />;
                 })
               : null}
           </div>
