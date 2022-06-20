@@ -16,7 +16,6 @@ export const Header = () => {
   const dispatch = useDispatch();
   const reduxData = useSelector((state) => state.store.data);
   const currency = useSelector((state) => state.store.currencies);
-  console.log(currency);
 
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
 
@@ -27,11 +26,10 @@ export const Header = () => {
   useEffect(() => {
     if (data) {
       dispatch(storeData(data));
-      data.currencies.map((item) => {
-        dispatch(storeCurrencies({ ...item, isSelected: false }));
-      });
+      dispatch(storeCurrencies(data.currencies));
     }
   }, [loading, data]);
+
   return (
     <header>
       <nav>
@@ -55,15 +53,24 @@ export const Header = () => {
           <img className="header-middle" src={greenPack} alt="logo" />
         </div>
         <div className="currency">
-          <p>$</p>
+          {currency.map((item) => {
+            return <p>{item.isSelected ? item.symbol : null}</p>;
+          })}
+
           <span onClick={handleArrow}>
             <img src={!toggleArrow ? down : up} alt="arrow" />
           </span>
           <div className="popup">
             {toggleArrow
-              ? data.currencies.map(({ label, symbol, index }) => {
+              ? currency.map(({ item, index }) => {
+                  console.log(item);
                   return (
-                    <CurrencyPop label={label} symbol={symbol} index={index} />
+                    <CurrencyPop
+                      label={item.label}
+                      symbol={item.symbol}
+                      index={index}
+                      selected={item.isSelected}
+                    />
                   );
                 })
               : null}

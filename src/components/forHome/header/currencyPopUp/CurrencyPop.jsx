@@ -1,12 +1,17 @@
 import "./currency.scss";
-import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
-const CurrencyPop = ({ label, symbol, index }) => {
-  const [isSelected, setIsSelected] = useState(false);
+const CurrencyPop = ({ label, symbol, index, isSelected }) => {
+  const currency = useSelector((state) => state.store.currencies);
+
+  const handleSelection = () => {
+    isSelected = true;
+    console.log(isSelected);
+  };
   return (
     <div className="pop">
-      <div>
-        <h1 key={index} onClick={() => setIsSelected(true)}>
+      <div onClick={handleSelection}>
+        <h1 key={index}>
           {symbol} {label}
         </h1>
       </div>

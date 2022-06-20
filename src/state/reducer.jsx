@@ -38,7 +38,10 @@ export const storeSlice = createSlice({
       state.name = action.payload;
     },
     storeCurrencies: (state, action) => {
-      state.currencies = action.payload;
+      state.currencies = action.payload.map((item) => ({
+        ...item,
+        isSelected: false,
+      }));
     },
   },
 });
