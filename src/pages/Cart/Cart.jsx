@@ -4,86 +4,42 @@ import shirt from "../../assets/shirt.png";
 
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { CartItem } from "./cartITem/CartItem";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartData = useSelector((state) => state.store.cart);
-
-  const handleIncr = () => {
-    cartData.map((item) => {
-      return (item.count += 1);
-    });
-  };
-  const handleDecr = () => {
-    cartData.map((item) => {
-      return (item.count += 1);
-    });
-  };
-
-  useEffect(() => {});
+  const tax = cartData.reduce(
+    (prev, item) => Math.round((prev + item.prices[0].amount) * 0.21),
+    0
+  );
+  const total = cartData.reduce(
+    (prev, item) => Math.round(prev + item.prices[0].amount + tax),
+    0
+  );
+  console.log(tax);
   return (
     <div className="App">
       <Header />
       <h1 className="cart-head">cart</h1>
       <div className="section-wrapper">
         {cartData.map((item) => {
-          return (
-            <section className="cart-wrapper">
-              <div className="cart-left">
-                <h1>{item.name}</h1>
-                <h2>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: item.description }}
-                  ></div>
-                </h2>
-                <span>${item.prices[0].amount}</span>
-                <p>size:</p>
-                <div className="cart-size">
-                  <div>XS</div>
-                  <div>S</div>
-                  <div>M</div>
-                  <div>L</div>
-                </div>
-                <p>color</p>
-                <div className="cart-color">
-                  <div style={{ background: "#D3D2D5" }} className="grey"></div>
-                  <div style={{ background: "black" }} className="black"></div>
-                  <div style={{ background: "green" }} className="green"></div>
-                </div>
-              </div>
-
-              <div className="cart-right">
-                <div className="cart-right-counter">
-                  <div
-                    style={{
-                      position: "absolute",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      height: "285px",
-                    }}
-                  >
-                    <button style={{ cursor: "pointer" }} onClick={handleIncr}>
-                      +
-                    </button>
-                    <span>{item.count}</span>
-                    <button style={{ cursor: "pointer" }} onClick={handleDecr}>
-                      -
-                    </button>
-                  </div>
-                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                    <img
-                      style={{ width: "200px", height: "288px" }}
-                      src={item.gallery[0]}
-                      alt="shirt"
-                    />
-                  </div>
-                </div>
-              </div>
-            </section>
-          );
+          return <CartItem item={item} />;
         })}
+      </div>
+      <div className="cart-footer">
+        <p>
+          Tax 21%: <strong>{tax}$</strong>
+        </p>
+        <p>
+          Quantity:{" "}
+          <strong>
+            {cartData.reduce((prev, item) => prev + item.count, 0)}
+          </strong>
+        </p>
+        <p>
+          total: <strong>{total}$</strong>
+        </p>
       </div>
     </div>
   );

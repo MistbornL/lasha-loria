@@ -62,4 +62,10 @@
       }
     }
   }
+
+  .cart-footer {
+    p {
+      @include basic-font(400, 24px, 28px);
+    }
+  }
 }
