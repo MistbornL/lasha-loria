@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
+  const [toggleCart, setToggleCart] = useState(false);
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.store.categories);
   const currency = useSelector((state) => state.store.currencies);
@@ -25,6 +26,10 @@ export const Header = () => {
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);
+  };
+
+  const handleCart = () => {
+    setToggleCart(!toggleCart);
   };
 
   useEffect(() => {
@@ -72,7 +77,7 @@ export const Header = () => {
                 })
               : null}
           </div>
-          <img src={cart} alt="cart" />
+          <img onClick={handleCart} src={cart} alt="cart" />
         </div>
       </nav>
     </header>
