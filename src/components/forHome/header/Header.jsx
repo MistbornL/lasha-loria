@@ -23,7 +23,6 @@ export const Header = () => {
   const currency = useSelector((state) => state.store.currencies);
 
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
-
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);
   };
@@ -34,7 +33,7 @@ export const Header = () => {
       dispatch(storeCategories(data.categories));
       dispatch(storeCurrencies(data.currencies));
     }
-  }, [loading, data]);
+  }, [loading, data, dispatch, error]);
 
   return (
     <header>
@@ -68,8 +67,7 @@ export const Header = () => {
           </span>
           <div className="popup">
             {toggleArrow
-              ? currency.map(({ item }) => {
-                  console.log(item);
+              ? currency.map((item) => {
                   return <CurrencyPop item={item} />;
                 })
               : null}
