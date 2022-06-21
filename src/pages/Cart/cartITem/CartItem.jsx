@@ -23,10 +23,11 @@ export const CartItem = ({ item }) => {
         <span>${item.prices[0].amount}</span>
         <p>size:</p>
         <div className="cart-size">
-          <div>XS</div>
-          <div>S</div>
-          <div>M</div>
-          <div>L</div>
+          {item.attributes[0].name === "Size"
+            ? item.attributes[0].items.map((size, index) => {
+                return <div key={index}>{size.value}</div>;
+              })
+            : null}
         </div>
         <p>color</p>
         <div className="cart-color">
