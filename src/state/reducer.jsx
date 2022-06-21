@@ -16,7 +16,7 @@ export const storeSlice = createSlice({
       prices: [],
       brand: "",
     },
-    cart: {},
+    cart: [],
     name: "all",
     currencies: [],
   },
@@ -34,7 +34,7 @@ export const storeSlice = createSlice({
       state.product = action.payload;
     },
     storeToCart: (state, action) => {
-      state.cart = action.payload;
+      state.cart.push(action.payload);
     },
 
     setName: (state, action) => {
