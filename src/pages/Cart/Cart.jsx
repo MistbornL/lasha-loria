@@ -14,7 +14,7 @@ const Cart = () => {
     (prev, item) => Math.round(prev + item.prices[0].amount + tax),
     0
   );
-  console.log(tax);
+
   return (
     <div className="App">
       <Header />
