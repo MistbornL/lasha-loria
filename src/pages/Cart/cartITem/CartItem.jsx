@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 
 export const CartItem = ({ item }) => {
@@ -21,19 +21,59 @@ export const CartItem = ({ item }) => {
           <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
         </h2>
         <span>${item.prices[0].amount}</span>
-        <p>size:</p>
+        {item.attributes.map((sizeItem) => {
+          if (sizeItem.name === "Size") {
+            return <p>Size</p>;
+          } else if (sizeItem.name === "Capacity") {
+            return <p>Capacity</p>;
+          } else {
+            return null;
+          }
+        })}
         <div className="cart-size">
-          {item.attributes[0].name === "Size"
-            ? item.attributes[0].items.map((size, index) => {
-                return <div key={index}>{size.value}</div>;
-              })
-            : null}
+          {item.attributes.map((sizeItem) => {
+            if (sizeItem.name === "Size") {
+              return sizeItem.items.map((size, index) => {
+                return (
+                  <Fragment key={index}>
+                    <div>{size.value} </div>
+                  </Fragment>
+                );
+              });
+            } else if (sizeItem.name === "Capacity") {
+              return sizeItem.items.map((cap, index) => {
+                return (
+                  <Fragment key={index}>
+                    <div className="size">
+                      <div>{cap.value} </div>
+                    </div>
+                  </Fragment>
+                );
+              });
+            }
+
+            return undefined;
+          })}
         </div>
-        <p>color</p>
+        {item.attributes.map((colorItem) => {
+          if (colorItem.name === "Color") {
+            return <p>Color</p>;
+          } else {
+            return null;
+          }
+        })}
         <div className="cart-color">
-          <div style={{ background: "#D3D2D5" }} className="grey"></div>
-          <div style={{ background: "black" }} className="black"></div>
-          <div style={{ background: "green" }} className="green"></div>
+          {item.attributes.map((colorItems) => {
+            if (colorItems.name === "Color") {
+              return colorItems.items.map((color, index) => {
+                const colorValue = color.value;
+                return (
+                  <div key={index} style={{ background: colorValue }}></div>
+                );
+              });
+            }
+            return undefined;
+          })}
         </div>
       </div>
 
