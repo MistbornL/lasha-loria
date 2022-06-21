@@ -23,6 +23,7 @@ export const Header = () => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.store.categories);
   const currency = useSelector((state) => state.store.currencies);
+  const cartData = useSelector((state) => state.store.cart);
 
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
   const handleArrow = () => {
@@ -78,7 +79,36 @@ export const Header = () => {
                 })
               : null}
           </div>
-          <img onClick={handleCart} src={cart} alt="cart" />
+          {cartData.length > 0 ? (
+            <div style={{ position: "relative" }}>
+              <img
+                style={{ position: "relative" }}
+                onClick={handleCart}
+                src={cart}
+                alt="cart"
+              />
+              <div
+                style={{
+                  marginTop: "-30px",
+                  marginLeft: "10px",
+                  position: "absolute",
+                  borderRadius: "60px",
+                  width: "20px",
+                  height: "20px",
+                  background: "black",
+                  color: "white",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {cartData.length}
+              </div>
+            </div>
+          ) : (
+            <img onClick={handleCart} src={cart} alt="cart" />
+          )}
+
           {toggleCart ? <CartPop /> : null}
         </div>
       </nav>
