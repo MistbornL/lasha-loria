@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./cartpop.scss";
 export const CartPop = () => {
   return (
@@ -7,7 +8,9 @@ export const CartPop = () => {
 
       <section></section>
       <div className="cart-bottom">
-        <button>VIEW BAG</button>
+        <Link to={"/cart"}>
+          <button>VIEW BAG</button>
+        </Link>
         <button>CHECK OUT</button>
       </div>
     </div>

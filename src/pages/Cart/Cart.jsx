@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 const Cart = () => {
   const [counter, setCounter] = useState(1);
   const cartData = useSelector((state) => state.store.cart);
+  console.log(cartData);
 
   const handleIncr = () => {
     setCounter(counter + 1);
@@ -23,9 +24,13 @@ const Cart = () => {
       <h1 className="cart-head">cart</h1>
       <section className="cart-wrapper">
         <div className="cart-left">
-          <h1>Apollo</h1>
-          <h2>Running Short</h2>
-          <span>$50.00</span>
+          <h1>{cartData.name}</h1>
+          <h2>
+            <div
+              dangerouslySetInnerHTML={{ __html: cartData.description }}
+            ></div>
+          </h2>
+          <span>${cartData.prices[0].amount}</span>
           <p>size:</p>
           <div className="cart-size">
             <div>XS</div>
@@ -64,7 +69,7 @@ const Cart = () => {
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
               <img
                 style={{ width: "200px", height: "288px" }}
-                src={shirt}
+                src={cartData.gallery[0]}
                 alt="shirt"
               />
             </div>
