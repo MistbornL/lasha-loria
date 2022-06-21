@@ -1,13 +1,10 @@
 import Header from "../../components/forHome/header/Header";
 import "./cart.scss";
-import shirt from "../../assets/shirt.png";
-
-import React, { Fragment, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { CartItem } from "./cartITem/CartItem";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const dispatch = useDispatch();
   const cartData = useSelector((state) => state.store.cart);
   const tax = cartData.reduce(
     (prev, item) => Math.round((prev + item.prices[0].amount) * 0.21),
