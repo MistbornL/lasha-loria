@@ -15,6 +15,7 @@ import {
   storeCategories,
 } from "../../../state/reducer";
 import { Link } from "react-router-dom";
+import { CartPop } from "./cartPop/CartPop";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
@@ -78,6 +79,7 @@ export const Header = () => {
               : null}
           </div>
           <img onClick={handleCart} src={cart} alt="cart" />
+          {toggleCart ? <CartPop /> : null}
         </div>
       </nav>
     </header>

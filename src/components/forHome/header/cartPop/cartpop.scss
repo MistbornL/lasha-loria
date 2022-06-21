@@ -1,7 +1,24 @@
 .cart-pop-wrapper {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin-top: 760px;
+  right: 10%;
+  background: #ffffff;
   padding: 32px 16px;
   gap: 32px;
   width: 325px;
   height: 677px;
+
+  .cart-bottom {
+    display: flex;
+    gap: 12px;
+    button {
+      cursor: pointer;
+      width: 143px;
+      height: 43px;
+      border: 1px solid #1d1f22;
+      background: #ffffff;
+    }
+  }
 }
