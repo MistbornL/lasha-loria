@@ -34,7 +34,7 @@ export const storeSlice = createSlice({
       state.product = action.payload;
     },
     storeToCart: (state, action) => {
-      state.cart.push(action.payload);
+      state.cart.push({ ...action.payload, count: 1 });
     },
 
     setName: (state, action) => {

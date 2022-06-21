@@ -3,18 +3,21 @@ import "./cart.scss";
 import shirt from "../../assets/shirt.png";
 
 import React, { Fragment, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Cart = () => {
-  const [counter, setCounter] = useState(1);
+  const dispatch = useDispatch();
   const cartData = useSelector((state) => state.store.cart);
-  console.log(cartData);
 
   const handleIncr = () => {
-    setCounter(counter + 1);
+    cartData.map((item) => {
+      return (item.count += 1);
+    });
   };
   const handleDecr = () => {
-    setCounter(counter - 1);
+    cartData.map((item) => {
+      return (item.count += 1);
+    });
   };
 
   useEffect(() => {});
@@ -64,7 +67,7 @@ const Cart = () => {
                     <button style={{ cursor: "pointer" }} onClick={handleIncr}>
                       +
                     </button>
-                    <span>{counter}</span>
+                    <span>{item.count}</span>
                     <button style={{ cursor: "pointer" }} onClick={handleDecr}>
                       -
                     </button>
