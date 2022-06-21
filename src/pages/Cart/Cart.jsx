@@ -22,10 +22,10 @@ const Cart = () => {
     <div className="App">
       <Header />
       <h1 className="cart-head">cart</h1>
-      <section className="cart-wrapper">
+      <div className="section-wrapper">
         {cartData.map((item) => {
           return (
-            <Fragment>
+            <section className="cart-wrapper">
               <div className="cart-left">
                 <h1>{item.name}</h1>
                 <h2>
@@ -78,10 +78,10 @@ const Cart = () => {
                   </div>
                 </div>
               </div>
-            </Fragment>
+            </section>
           );
         })}
-      </section>
+      </div>
     </div>
   );
 };
