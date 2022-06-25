@@ -10,9 +10,11 @@
   // justify-content: center;
 
   div {
+    cursor: pointer;
     width: 114px;
     height: 45px;
     display: flex;
+    justify-content: center;
     align-items: center;
   }
   div:hover {
@@ -21,5 +23,6 @@
   h1 {
     margin: 0;
     @include basic-font(500, 18px, 160%);
+    font-weight: bold;
   }
 }
