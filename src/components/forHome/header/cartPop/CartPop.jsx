@@ -13,7 +13,7 @@ export const CartPop = () => {
 
       {cartData.map((item) => {
         return (
-          <section style={{ position: "relative", marginBottom: "80px" }}>
+          <section style={{ position: "relative" }}>
             <div className="card-pop-top">
               <h2>{item.name}</h2>
               <h1>{item.prices[0].amount}$</h1>
