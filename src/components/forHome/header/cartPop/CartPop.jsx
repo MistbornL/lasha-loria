@@ -16,7 +16,7 @@ export const CartPop = () => {
           <section>
             <div className="card-pop-top">
               <h2>{item.name}</h2>
-              <h1>{item.prices[0].amount}</h1>
+              <h1>{item.prices[0].amount}$</h1>
             </div>
             {item.attributes.map((sizeItem) => {
               if (sizeItem.name === "Size") {
@@ -52,6 +52,20 @@ export const CartPop = () => {
                 return undefined;
               })}
             </div>
+            <div className="cart-pop-right">
+              <div className="counter">
+                <button>+</button>
+                <span>{item.count}</span>
+                <button>-</button>
+              </div>
+              <div>
+                <img
+                  style={{ width: "121px", height: "190px" }}
+                  src={item.gallery[0]}
+                  alt=""
+                />
+              </div>
+            </div>
           </section>
         );
       })}
@@ -60,7 +74,9 @@ export const CartPop = () => {
         <Link to={"/cart"}>
           <button>VIEW BAG</button>
         </Link>
-        <button>CHECK OUT</button>
+        <button style={{ background: "#5ECE7B", color: "white" }}>
+          CHECK OUT
+        </button>
       </div>
     </div>
   );
