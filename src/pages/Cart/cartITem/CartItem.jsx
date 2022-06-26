@@ -5,7 +5,7 @@ export const CartItem = ({ item }) => {
   const cartData = useSelector((state) => state.store.cart);
   const handleIncr = () => {
     cartData.map((item) => {
-      return (item.count += 1);
+      return item;
     });
   };
   const handleDecr = () => {

@@ -2,7 +2,6 @@ import Header from "../../components/forHome/header/Header";
 import "./home.scss";
 import React from "react";
 import ProdCard from "../../components/forHome/prodCard/ProdCard";
-// import { useSelector } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_CATEGORIES } from "../../GraphQL/Queries";
@@ -25,9 +24,10 @@ export const Home = () => {
       </div>
       <main>
         <section className="prod-card">
-          {data.category.products.map((item) => {
+          {data.category.products.map((item, index) => {
             return (
               <ProdCard
+                key={index}
                 name={item.name}
                 price={item.prices[0].amount}
                 symbol={item.prices[0].currency.symbol}

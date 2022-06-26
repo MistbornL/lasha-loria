@@ -48,8 +48,9 @@ export const Header = () => {
         <ul className="header-top-right">
           {categories.map((item, index) => {
             return (
-              <li key={index}>
+              <li>
                 <Link
+                  key={index}
                   onClick={() => {
                     dispatch(setName(item.name));
                   }}
