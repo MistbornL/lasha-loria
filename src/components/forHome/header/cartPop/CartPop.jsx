@@ -58,7 +58,13 @@ export const CartPop = () => {
                 <span>{item.count}</span>
                 <button>-</button>
               </div>
-              <div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  position: "absolute",
+                }}
+              >
                 <img
                   style={{ width: "121px", height: "190px" }}
                   src={item.gallery[0]}
