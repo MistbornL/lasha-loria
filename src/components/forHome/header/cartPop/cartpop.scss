@@ -1,3 +1,4 @@
+@import "../../../../variables.scss";
 .cart-pop-wrapper {
   position: absolute;
   display: flex;
@@ -20,6 +21,28 @@
       height: 43px;
       border: 1px solid #1d1f22;
       background: #ffffff;
+    }
+  }
+
+  .card-pop-top {
+    h2 {
+      @include basic-font(300, 16px, 160%, #1d1f22);
+    }
+  }
+
+  .cart-size {
+    display: flex;
+    gap: 10px;
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    div {
+      border: 1px solid #1d1f22;
+      width: 24px;
+      height: 24px;
+      @include flex(center);
     }
   }
 }

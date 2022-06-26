@@ -17,6 +17,7 @@ const PDP = () => {
     e.preventDefault();
     dispatch(storeToCart(card));
   };
+  console.log(product);
 
   useEffect(() => {
     setIsLoading(false);

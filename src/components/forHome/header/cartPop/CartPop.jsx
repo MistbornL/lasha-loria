@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./cartpop.scss";
@@ -15,7 +15,42 @@ export const CartPop = () => {
         return (
           <section>
             <div className="card-pop-top">
-              <h1>{item.name}</h1>
+              <h2>{item.name}</h2>
+              <h1>{item.prices[0].amount}</h1>
+            </div>
+            {item.attributes.map((sizeItem) => {
+              if (sizeItem.name === "Size") {
+                return <p>Size</p>;
+              } else if (sizeItem.name === "Capacity") {
+                return <p>Capacity</p>;
+              } else {
+                return null;
+              }
+            })}
+            <div className="cart-size">
+              {item.attributes.map((sizeItem) => {
+                if (sizeItem.name === "Size") {
+                  return sizeItem.items.map((size, index) => {
+                    return (
+                      <Fragment key={index}>
+                        <div>{size.value} </div>
+                      </Fragment>
+                    );
+                  });
+                } else if (sizeItem.name === "Capacity") {
+                  return sizeItem.items.map((cap, index) => {
+                    return (
+                      <Fragment key={index}>
+                        <div className="size">
+                          <div>{cap.value} </div>
+                        </div>
+                      </Fragment>
+                    );
+                  });
+                }
+
+                return undefined;
+              })}
             </div>
           </section>
         );
