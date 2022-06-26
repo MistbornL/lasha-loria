@@ -13,7 +13,7 @@ export const CartPop = () => {
 
       {cartData.map((item) => {
         return (
-          <section>
+          <section style={{ position: "relative", marginBottom: "80px" }}>
             <div className="card-pop-top">
               <h2>{item.name}</h2>
               <h1>{item.prices[0].amount}$</h1>
@@ -52,6 +52,28 @@ export const CartPop = () => {
                 return undefined;
               })}
             </div>
+
+            {item.attributes.map((colorItem) => {
+              if (colorItem.name === "Color") {
+                return <p>color</p>;
+              } else {
+                return null;
+              }
+            })}
+
+            <div className="cart-color">
+              {item.attributes.map((colorItems) => {
+                if (colorItems.name === "Color") {
+                  return colorItems.items.map((color, index) => {
+                    const colorValue = color.value;
+                    return (
+                      <div key={index} style={{ background: colorValue }}></div>
+                    );
+                  });
+                }
+                return undefined;
+              })}
+            </div>
             <div className="cart-pop-right">
               <div className="counter">
                 <button>+</button>
@@ -68,7 +90,7 @@ export const CartPop = () => {
                 <img
                   style={{ width: "121px", height: "190px" }}
                   src={item.gallery[0]}
-                  alt=""
+                  alt={item.name}
                 />
               </div>
             </div>

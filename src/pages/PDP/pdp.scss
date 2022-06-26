@@ -39,6 +39,7 @@
       @include basic-font(700, 18px, 18px, #1d1f22);
     }
     .color {
+      cursor: pointer;
       @include cart-color;
     }
   }

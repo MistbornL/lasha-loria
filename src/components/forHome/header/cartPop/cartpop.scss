@@ -28,8 +28,11 @@
 
   .card-pop-top {
     h2 {
+      display: flex;
+      width: 130px;
       height: 52px;
       margin: 0;
+
       @include basic-font(300, 16px, 160%, #1d1f22);
     }
   }
@@ -44,7 +47,7 @@
     line-height: 160%;
     div {
       border: 1px solid #1d1f22;
-      width: 24px;
+      width: 30px;
       height: 24px;
       @include flex(center);
     }
@@ -70,5 +73,15 @@
   }
   .cart-bottom {
     justify-content: space-between;
+  }
+  .cart-color {
+    display: flex;
+    gap: 10px;
+
+    div {
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+    }
   }
 }
