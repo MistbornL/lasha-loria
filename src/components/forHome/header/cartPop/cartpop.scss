@@ -7,7 +7,7 @@
   right: 10%;
   background: #ffffff;
   padding: 32px 16px;
-  gap: 42px;
+  gap: 130px;
   width: 325px;
   height: 677px;
   h1 {
@@ -56,14 +56,14 @@
   .cart-pop-right {
     position: absolute;
     right: 39%;
-    top: 10%;
+    top: 5%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     .counter {
       position: absolute;
-      margin-left: -40px;
+      margin-left: -30px;
       display: flex;
       flex-direction: column;
       align-items: center;
