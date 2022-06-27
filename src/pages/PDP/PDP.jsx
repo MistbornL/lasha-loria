@@ -16,6 +16,7 @@ const PDP = () => {
   const handleButton = (e) => {
     e.preventDefault();
     dispatch(storeToCart(card));
+    console.log(cart);
   };
   console.log(product);
 
