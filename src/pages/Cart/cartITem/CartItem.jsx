@@ -80,7 +80,7 @@ export const CartItem = ({ item }) => {
             <button
               style={{ cursor: "pointer" }}
               onClick={() => {
-                console.log((item.count = item.count + 1));
+                console.log((item.count += 1));
               }}
             >
               +

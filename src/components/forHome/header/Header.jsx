@@ -48,9 +48,8 @@ export const Header = () => {
         <ul className="header-top-right">
           {categories.map((item, index) => {
             return (
-              <li>
+              <li key={index}>
                 <Link
-                  key={index}
                   onClick={() => {
                     dispatch(setName(item.name));
                   }}
@@ -66,8 +65,8 @@ export const Header = () => {
           <img className="header-middle" src={greenPack} alt="logo" />
         </div>
         <div className="currency">
-          {currency.map((item) => {
-            return <p>{item.isSelected ? item.symbol : null}</p>;
+          {currency.map((item, index) => {
+            return <p key={index}>{item.isSelected ? item.symbol : null}</p>;
           })}
 
           <span onClick={handleArrow}>
