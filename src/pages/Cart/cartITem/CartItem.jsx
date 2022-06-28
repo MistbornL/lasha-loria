@@ -10,7 +10,7 @@ export const CartItem = ({ item }) => {
   };
   const handleDecr = () => {
     cartData.map((item) => {
-      return (item.count += 1);
+      console.log(item);
     });
   };
   return (

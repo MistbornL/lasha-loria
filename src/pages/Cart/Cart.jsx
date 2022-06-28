@@ -7,11 +7,12 @@ import { useSelector } from "react-redux";
 const Cart = () => {
   const cartData = useSelector((state) => state.store.cart);
   const tax = cartData.reduce(
-    (prev, item) => Math.round((prev + item.prices[0].amount) * 0.21),
+    (prev, item) =>
+      Math.round((prev + item.prices[0].amount * item.count) * 0.21),
     0
   );
   const total = cartData.reduce(
-    (prev, item) => Math.round(prev + item.prices[0].amount + tax),
+    (prev, item) => Math.round(prev + item.prices[0].amount * item.count + tax),
     0
   );
 

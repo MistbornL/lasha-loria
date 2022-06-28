@@ -9,14 +9,12 @@ const PDP = () => {
   const params = useParams();
   const [card, setCard] = useState({});
   const product = useSelector((state) => state.store.product);
-  const cart = useSelector((state) => state.store.cart);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
   const handleButton = (e) => {
     e.preventDefault();
     dispatch(storeToCart(card));
-    console.log(cart);
   };
   console.log(product);
 

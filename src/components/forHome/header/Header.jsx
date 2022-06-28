@@ -103,7 +103,7 @@ export const Header = () => {
                   alignItems: "center",
                 }}
               >
-                {cartData.length}
+                {cartData.reduce((prev, item) => prev + item.count, 0)}
               </div>
             </div>
           ) : (
