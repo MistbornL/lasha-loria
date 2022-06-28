@@ -1,18 +1,6 @@
 import React, { Fragment } from "react";
-import { useSelector } from "react-redux";
 
 export const CartItem = ({ item }) => {
-  const cartData = useSelector((state) => state.store.cart);
-  const handleIncr = () => {
-    cartData.map((item) => {
-      return item;
-    });
-  };
-  const handleDecr = () => {
-    cartData.map((item) => {
-      console.log(item);
-    });
-  };
   return (
     <section className="cart-wrapper">
       <div className="cart-left">
@@ -89,11 +77,21 @@ export const CartItem = ({ item }) => {
               height: "285px",
             }}
           >
-            <button style={{ cursor: "pointer" }} onClick={handleIncr}>
+            <button
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                console.log((item.count = item.count + 1));
+              }}
+            >
               +
             </button>
             <span>{item.count}</span>
-            <button style={{ cursor: "pointer" }} onClick={handleDecr}>
+            <button
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                item.count -= 1;
+              }}
+            >
               -
             </button>
           </div>
