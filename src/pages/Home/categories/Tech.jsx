@@ -25,9 +25,10 @@ export const Tech = () => {
 
       <main>
         <section className="prod-card">
-          {data.category.products.map((item) => {
+          {data.category.products.map((item, index) => {
             return (
               <ProdCard
+                key={index}
                 name={item.name}
                 price={item.prices[0].amount}
                 symbol={item.prices[0].currency.symbol}
