@@ -51,8 +51,6 @@ export const storeSlice = createSlice({
       state.cart.map((item) => {
         if (item.name === action.payload.name) {
           return { ...item, count: (item.count += 1) };
-        } else {
-          console.log("agh");
         }
         return item;
       });
@@ -64,7 +62,6 @@ export const storeSlice = createSlice({
             console.log(item.count);
             return { ...item, count: (item.count -= 1) };
           } else {
-            console.log(state.cart);
             return state.cart.filter((item) => item.count === 0);
           }
         }
