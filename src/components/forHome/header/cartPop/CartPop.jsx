@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./cartpop.scss";
 export const CartPop = () => {
   const cartData = useSelector((state) => state.store.cart);
-  console.log(cartData);
+
   return (
     <div>
       <div className="cart-pop-wrapper">
