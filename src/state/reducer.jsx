@@ -59,7 +59,6 @@ export const storeSlice = createSlice({
       state.cart.map((item) => {
         if (item.name === action.payload.name) {
           if (item.count !== 0) {
-            console.log(item.count);
             return { ...item, count: (item.count -= 1) };
           } else {
             return state.cart.filter((item) => item.count === 0);
