@@ -1,6 +1,10 @@
 import React, { Fragment } from "react";
+import { useDispatch } from "react-redux";
+import { decrement, increment } from "../../../state/reducer";
 
 export const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
+
   return (
     <section className="cart-wrapper">
       <div className="cart-left">
@@ -80,7 +84,7 @@ export const CartItem = ({ item }) => {
             <button
               style={{ cursor: "pointer" }}
               onClick={() => {
-                console.log((item.count += 1));
+                dispatch(increment(item));
               }}
             >
               +
@@ -89,7 +93,7 @@ export const CartItem = ({ item }) => {
             <button
               style={{ cursor: "pointer" }}
               onClick={() => {
-                item.count -= 1;
+                dispatch(decrement(item));
               }}
             >
               -

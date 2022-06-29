@@ -47,7 +47,30 @@ export const storeSlice = createSlice({
         });
       }
     },
-
+    increment: (state, action) => {
+      state.cart.map((item) => {
+        if (item.name === action.payload.name) {
+          return { ...item, count: (item.count += 1) };
+        } else {
+          console.log("agh");
+        }
+        return item;
+      });
+    },
+    decrement: (state, action) => {
+      state.cart.map((item) => {
+        if (item.name === action.payload.name) {
+          if (item.count !== 0) {
+            console.log(item.count);
+            return { ...item, count: (item.count -= 1) };
+          } else {
+            console.log(state.cart);
+            return state.cart.filter((item) => item.count === 0);
+          }
+        }
+        return item;
+      });
+    },
     setName: (state, action) => {
       state.name = action.payload;
     },
@@ -66,5 +89,7 @@ export const {
   storeToCart,
   setName,
   storeCurrencies,
+  increment,
+  decrement,
 } = storeSlice.actions;
 export default storeSlice;
