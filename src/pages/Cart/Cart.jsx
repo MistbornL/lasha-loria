@@ -16,9 +16,6 @@ const Cart = () => {
     ));
   });
 
-  useEffect(() => {
-    console.log(cartData);
-  }, [cartData]);
   return (
     <div className="App">
       <Header />

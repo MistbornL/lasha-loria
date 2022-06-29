@@ -1,9 +1,7 @@
 import "./currency.scss";
 
 const CurrencyPop = ({ item }) => {
-  const handleClick = () => {
-    console.log(item);
-  };
+  const handleClick = () => {};
   return (
     <div className="pop">
       <div onClick={handleClick}>
