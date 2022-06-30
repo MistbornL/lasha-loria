@@ -28,9 +28,6 @@ export const Header = () => {
   const currencyRef = useRef();
   const cartRef = useRef();
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
-  cartData.map((item) => {
-    console.log(item);
-  });
 
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);
