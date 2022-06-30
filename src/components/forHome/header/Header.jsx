@@ -16,6 +16,7 @@ import {
 } from "../../../state/reducer";
 import { Link } from "react-router-dom";
 import { CartPop } from "./cartPop/CartPop";
+import { useRef } from "react";
 
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
@@ -24,8 +25,10 @@ export const Header = () => {
   const categories = useSelector((state) => state.store.categories);
   const currency = useSelector((state) => state.store.currencies);
   const cartData = useSelector((state) => state.store.cart);
+  const ref = useRef(null);
 
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
+
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);
   };
@@ -40,8 +43,18 @@ export const Header = () => {
       dispatch(storeCategories(data.categories));
       dispatch(storeCurrencies(data.currencies));
     }
+
+    if (ref.current === "div.popup") {
+      console.log("ahh");
+    }
   }, [loading, data, dispatch, error]);
 
+  useEffect(() => {
+    document.addEventListener("mousedown", () => {
+      setToggleArrow(false);
+    });
+    // console.log(toggleCart);
+  });
   return (
     <header>
       <nav>
