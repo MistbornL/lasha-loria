@@ -48,12 +48,17 @@ export const Header = () => {
   }, [loading, data, dispatch, error]);
 
   useEffect(() => {
-    document.addEventListener("mousedown", (e) => {
+    const handler = (e) => {
       if (!currencyRef.current.contains(e.target)) {
         setToggleArrow(false);
       }
       if (!cartRef.current.contains(e.target)) setToggleCart(false);
-    });
+    };
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
   });
   return (
     <header>
