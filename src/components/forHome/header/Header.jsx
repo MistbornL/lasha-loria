@@ -25,7 +25,8 @@ export const Header = () => {
   const categories = useSelector((state) => state.store.categories);
   const currency = useSelector((state) => state.store.currencies);
   const cartData = useSelector((state) => state.store.cart);
-  const currencyAndCartRef = useRef();
+  const currencyRef = useRef();
+  const cartRef = useRef();
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
 
   const handleArrow = () => {
@@ -48,13 +49,11 @@ export const Header = () => {
 
   useEffect(() => {
     document.addEventListener("mousedown", (e) => {
-      console.log(currencyAndCartRef.current);
-      if (!currencyAndCartRef.current.contains(e.target)) {
+      console.log(currencyRef.current);
+      if (!currencyRef.current.contains(e.target)) {
         setToggleArrow(false);
-        setToggleCart(false);
       }
-      // if (!cartRef.current.contains(e.target)) setToggleCart(false);
-      // console.log(cartRef);
+      if (!cartRef.current.contains(e.target)) setToggleCart(false);
     });
   });
   return (
@@ -79,7 +78,7 @@ export const Header = () => {
         <div style={{ display: "flex" }}>
           <img className="header-middle" src={greenPack} alt="logo" />
         </div>
-        <div ref={currencyAndCartRef} className="currency">
+        <div ref={currencyRef} className="currency">
           {currency.map((item, index) => {
             return <p key={index}>{item.isSelected ? item.symbol : null}</p>;
           })}
@@ -124,7 +123,9 @@ export const Header = () => {
             <img onClick={handleCart} src={cart} alt="cart" />
           )}
 
-          {toggleCart ? <CartPop cartRef={currencyAndCartRef} /> : null}
+          <div ref={cartRef} className="cart">
+            {toggleCart ? <CartPop /> : null}
+          </div>
         </div>
       </nav>
     </header>
