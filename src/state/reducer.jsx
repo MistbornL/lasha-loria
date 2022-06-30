@@ -61,7 +61,7 @@ export const storeSlice = createSlice({
           if (item.count !== 0) {
             return { ...item, count: (item.count -= 1) };
           } else {
-            return state.cart.filter((item) => item.count === 0);
+            // return state.cart.rem;
           }
         }
         return item;

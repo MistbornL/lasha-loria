@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { decrement, increment } from "../../../../state/reducer";
 import "./cartpop.scss";
 export const CartPop = () => {
   const cartData = useSelector((state) => state.store.cart);
-
+  const dispatch = useDispatch();
   return (
     <div>
       <div className="cart-pop-wrapper">
@@ -82,9 +83,21 @@ export const CartPop = () => {
               </div>
               <div className="cart-pop-right">
                 <div className="counter">
-                  <button>+</button>
+                  <button
+                    onClick={() => {
+                      dispatch(increment(item));
+                    }}
+                  >
+                    +
+                  </button>
                   <span>{item.count}</span>
-                  <button>-</button>
+                  <button
+                    onClick={() => {
+                      dispatch(decrement(item));
+                    }}
+                  >
+                    -
+                  </button>
                 </div>
                 <div
                   style={{
