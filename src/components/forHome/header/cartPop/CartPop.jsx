@@ -23,9 +23,9 @@ export const CartPop = ({ cartRef }) => {
                 <h2>{item.name}</h2>
                 <h1>{item.prices[0].amount}$</h1>
               </div>
-              {item.attributes.map((sizeItem) => {
+              {item.attributes.map((sizeItem, index) => {
                 if (sizeItem.name === "Size") {
-                  return <p>Size</p>;
+                  return <p key={index}>Size</p>;
                 } else if (sizeItem.name === "Capacity") {
                   return <p>Capacity</p>;
                 } else {

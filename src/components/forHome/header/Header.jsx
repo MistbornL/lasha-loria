@@ -60,6 +60,7 @@ export const Header = () => {
       document.removeEventListener("mousedown", handler);
     };
   });
+
   return (
     <header>
       <nav>
