@@ -52,6 +52,7 @@ export const Header = () => {
   useEffect(() => {
     document.addEventListener("mousedown", () => {
       setToggleArrow(false);
+      setToggleCart(false);
     });
     // console.log(toggleCart);
   });
