@@ -49,7 +49,6 @@ export const Header = () => {
 
   useEffect(() => {
     document.addEventListener("mousedown", (e) => {
-      console.log(currencyRef.current);
       if (!currencyRef.current.contains(e.target)) {
         setToggleArrow(false);
       }

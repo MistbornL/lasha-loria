@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
   const cartData = useSelector((state) => state.store.cart);
-  console.log(cartData);
+
   var tax = 0;
   var total = 0;
   cartData.map((item) => {
