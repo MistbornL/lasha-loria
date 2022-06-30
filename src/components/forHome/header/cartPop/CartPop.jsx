@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { decrement, increment } from "../../../../state/reducer";
 import "./cartpop.scss";
-export const CartPop = () => {
+export const CartPop = ({ cartRef }) => {
   const cartData = useSelector((state) => state.store.cart);
   const dispatch = useDispatch();
   return (
     <div>
-      <div className="cart-pop-wrapper">
+      <div ref={cartRef} className="cart-pop-wrapper">
         <div style={{ marginBottom: "-40px" }}>
           <h1>
             My Bag, <span>{cartData.length} items</span>

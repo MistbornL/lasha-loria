@@ -25,7 +25,8 @@ export const Header = () => {
   const categories = useSelector((state) => state.store.categories);
   const currency = useSelector((state) => state.store.currencies);
   const cartData = useSelector((state) => state.store.cart);
-  const ref = useRef(null);
+  const currencyRef = useRef();
+  const cartRef = useRef();
 
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
 
@@ -43,18 +44,13 @@ export const Header = () => {
       dispatch(storeCategories(data.categories));
       dispatch(storeCurrencies(data.currencies));
     }
-
-    if (ref.current === "div.popup") {
-      console.log("ahh");
-    }
   }, [loading, data, dispatch, error]);
 
   useEffect(() => {
-    document.addEventListener("mousedown", () => {
-      setToggleArrow(false);
+    document.addEventListener("mousedown", (e) => {
+      if (!currencyRef.current.contains(e.target)) setToggleArrow(false);
       setToggleCart(false);
     });
-    // console.log(toggleCart);
   });
   return (
     <header>
@@ -86,7 +82,7 @@ export const Header = () => {
           <span onClick={handleArrow}>
             <img src={!toggleArrow ? down : up} alt="arrow" />
           </span>
-          <div className="popup">
+          <div ref={currencyRef} className="popup">
             {toggleArrow
               ? currency.map((item, index) => {
                   return <CurrencyPop item={item} key={index} />;
