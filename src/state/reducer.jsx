@@ -25,7 +25,7 @@ export const storeSlice = createSlice({
       state.data = action.payload;
     },
     storeCategories: (state, action) => {
-      state.categories = state.categories = action.payload.map((item) => ({
+      state.categories = action.payload.map((item) => ({
         ...item,
         isSelected: false,
       }));
@@ -57,11 +57,13 @@ export const storeSlice = createSlice({
     },
     decrement: (state, action) => {
       state.cart.map((item) => {
-        if (item.name === action.payload.name) {
+        if (item.count < 1) {
+          return (state.cart = state.cart.filter(
+            (data) => data.name !== action.payload.name
+          ));
+        } else if (item.name === action.payload.name) {
           if (item.count !== 0) {
             return { ...item, count: (item.count -= 1) };
-          } else {
-            // return state.cart.rem;
           }
         }
         return item;
