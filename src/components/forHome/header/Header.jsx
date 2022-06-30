@@ -27,15 +27,16 @@ export const Header = () => {
   const cartData = useSelector((state) => state.store.cart);
   const currencyRef = useRef();
   const cartRef = useRef();
-
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
 
   const handleArrow = () => {
     setToggleArrow(!toggleArrow);
+    setToggleCart(false);
   };
 
   const handleCart = () => {
     setToggleCart(!toggleCart);
+    setToggleArrow(false);
   };
 
   useEffect(() => {
@@ -48,8 +49,12 @@ export const Header = () => {
 
   useEffect(() => {
     document.addEventListener("mousedown", (e) => {
-      if (!currencyRef.current.contains(e.target)) setToggleArrow(false);
-      setToggleCart(false);
+      console.log(currencyRef.current);
+      if (!currencyRef.current.contains(e.target)) {
+        setToggleArrow(false);
+      }
+      // if (!cartRef.current.contains(e.target)) setToggleCart(false);
+      // console.log(cartRef);
     });
   });
   return (
@@ -74,7 +79,7 @@ export const Header = () => {
         <div style={{ display: "flex" }}>
           <img className="header-middle" src={greenPack} alt="logo" />
         </div>
-        <div className="currency">
+        <div ref={currencyRef} className="currency">
           {currency.map((item, index) => {
             return <p key={index}>{item.isSelected ? item.symbol : null}</p>;
           })}
@@ -82,7 +87,7 @@ export const Header = () => {
           <span onClick={handleArrow}>
             <img src={!toggleArrow ? down : up} alt="arrow" />
           </span>
-          <div ref={currencyRef} className="popup">
+          <div className="popup">
             {toggleArrow
               ? currency.map((item, index) => {
                   return <CurrencyPop item={item} key={index} />;
@@ -119,7 +124,7 @@ export const Header = () => {
             <img onClick={handleCart} src={cart} alt="cart" />
           )}
 
-          {toggleCart ? <CartPop /> : null}
+          {toggleCart ? <CartPop cartRef={cartRef} /> : null}
         </div>
       </nav>
     </header>

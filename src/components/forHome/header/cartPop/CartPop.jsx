@@ -6,6 +6,7 @@ import "./cartpop.scss";
 export const CartPop = ({ cartRef }) => {
   const cartData = useSelector((state) => state.store.cart);
   const dispatch = useDispatch();
+
   return (
     <div>
       <div ref={cartRef} className="cart-pop-wrapper">
