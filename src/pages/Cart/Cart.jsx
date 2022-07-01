@@ -6,8 +6,12 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
   const cartData = useSelector((state) => state.store.cart);
-  // const cartData = Array.from(new Set(cartDataD.map((a) => a.attributes)));
-  // console.log(cartData);
+  // const cartData = [
+  //   ...useSelector((state) => state.store.cart)
+  //     .reduce((map, obj) => map.set(obj.id, obj), new Map())
+  //     .values(),
+  // ];
+
   var tax = 0;
   var total = 0;
   cartData.map((item) => {

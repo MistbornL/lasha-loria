@@ -17,6 +17,7 @@ export const storeSlice = createSlice({
       brand: "",
     },
     cart: [],
+    uniqueCart: [],
     name: "all",
     currencies: [],
   },
@@ -40,10 +41,7 @@ export const storeSlice = createSlice({
         alert("Product Is Out Of Stack");
       } else {
         state.cart.map((item) => {
-          if (
-            item.name === action.payload.name &&
-            item.id === action.payload.id
-          ) {
+          if (item.name === action.payload.name) {
             item.count += 1;
           }
           if (item.name !== action.payload.name) {
