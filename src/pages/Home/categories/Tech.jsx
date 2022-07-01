@@ -28,6 +28,7 @@ export const Tech = () => {
           {data.category.products.map((item, index) => {
             return (
               <ProdCard
+                item={item}
                 key={index}
                 name={item.name}
                 price={item.prices[0].amount}

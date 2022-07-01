@@ -2,10 +2,12 @@ import "./card.scss";
 import greenCart from "../../../assets/cartInGreen.png";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { storeToCart } from "../../../state/reducer";
+import { useDispatch } from "react-redux/es/exports";
 
-const ProdCard = ({ name, img, price, symbol, id, inStock }) => {
+const ProdCard = ({ item, name, img, price, symbol, id, inStock }) => {
   const [isShown, setIsShown] = useState(false);
-
+  const dispatch = useDispatch();
   return (
     <div
       className={inStock ? "prod-card-top" : "out-of-stock"}
@@ -14,6 +16,9 @@ const ProdCard = ({ name, img, price, symbol, id, inStock }) => {
     >
       <div className="prod-img">
         <img
+          onClick={() => {
+            dispatch(storeToCart(item));
+          }}
           style={{
             position: "absolute",
             right: 0,
