@@ -34,16 +34,20 @@ export const storeSlice = createSlice({
       state.product = action.payload;
     },
     storeToCart: (state, action) => {
-      if (state.cart.length === 0) {
+      if (state.cart.length === 0 && action.payload.inStock !== false) {
         state.cart.push({ ...action.payload, count: 1 });
+      } else if (action.payload.inStock === false) {
+        alert("Product Is Out Of Stack");
       } else {
         state.cart.map((item) => {
-          if (item.name === action.payload.name) {
+          if (
+            item.name === action.payload.name &&
+            item.id === action.payload.id
+          ) {
             item.count += 1;
-          } else {
-            console.log("ah");
+          }
+          if (item.name !== action.payload.name) {
             state.cart.push({ ...action.payload, count: 1 });
-            state.cart = [...new Set(state.cart)];
           }
           return item;
         });

@@ -5,6 +5,7 @@ import { decrement, increment } from "../../../../state/reducer";
 import "./cartpop.scss";
 export const CartPop = ({ cartRef }) => {
   const cartData = useSelector((state) => state.store.cart);
+
   const dispatch = useDispatch();
 
   return (

@@ -5,9 +5,9 @@ import { CartItem } from "./cartITem/CartItem";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const cartDataMessed = useSelector((state) => state.store.cart);
-  const cartData = Array.from(new Set(cartDataMessed.map((a) => a.id)));
-  console.log(cartData);
+  const cartData = useSelector((state) => state.store.cart);
+  // const cartData = Array.from(new Set(cartDataD.map((a) => a.attributes)));
+  // console.log(cartData);
   var tax = 0;
   var total = 0;
   cartData.map((item) => {
