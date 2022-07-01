@@ -41,7 +41,9 @@ export const storeSlice = createSlice({
           if (item.name === action.payload.name) {
             item.count += 1;
           } else {
+            console.log("ah");
             state.cart.push({ ...action.payload, count: 1 });
+            state.cart = [...new Set(state.cart)];
           }
           return item;
         });
@@ -57,7 +59,7 @@ export const storeSlice = createSlice({
     },
     decrement: (state, action) => {
       state.cart.map((item) => {
-        if (item.count < 1) {
+        if (item.count === 0) {
           return (state.cart = state.cart.filter(
             (data) => data.name !== action.payload.name
           ));

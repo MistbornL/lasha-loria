@@ -10,7 +10,7 @@ export const CartPop = ({ cartRef }) => {
   return (
     <div>
       <div ref={cartRef} className="cart-pop-wrapper">
-        <div style={{ marginBottom: "-40px" }}>
+        <div>
           <h1>
             My Bag, <span>{cartData.length} items</span>
           </h1>
@@ -18,7 +18,7 @@ export const CartPop = ({ cartRef }) => {
 
         {cartData.map((item) => {
           return (
-            <section style={{ position: "relative", height: "150px" }}>
+            <section style={{ position: "relative", height: "180px" }}>
               <div className="card-pop-top">
                 <h2>{item.name}</h2>
                 <h1>{item.prices[0].amount}$</h1>
