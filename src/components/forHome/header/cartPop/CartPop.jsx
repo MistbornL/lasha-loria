@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { decrement, increment } from "../../../../state/reducer";
 import "./cartpop.scss";
+
 export const CartPop = ({ cartRef }) => {
   const cartData = useSelector((state) => state.store.cart);
-
+  const selectedCurrencies = useSelector(
+    (state) => state.store.selectedCurrencies
+  );
   const dispatch = useDispatch();
 
   return (
@@ -25,7 +28,17 @@ export const CartPop = ({ cartRef }) => {
             >
               <div className="card-pop-top">
                 <h2>{item.name}</h2>
-                <h1>{item.prices[0].amount}$</h1>
+                {item.prices.map((price) => {
+                  if (price.currency.symbol === selectedCurrencies) {
+                    return (
+                      <h1>
+                        {price.currency.symbol}
+                        {price.amount}
+                      </h1>
+                    );
+                  }
+                  return undefined;
+                })}
               </div>
               {item.attributes.map((sizeItem, index) => {
                 if (sizeItem.name === "Size") {

@@ -1,9 +1,12 @@
 import React, { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { decrement, increment } from "../../../state/reducer";
-
+import { useSelector } from "react-redux/es/hooks/useSelector";
 export const CartItem = ({ item }) => {
   const dispatch = useDispatch();
+  const selectedCurrencies = useSelector(
+    (state) => state.store.selectedCurrencies
+  );
 
   return (
     <section className="cart-wrapper">
@@ -12,7 +15,18 @@ export const CartItem = ({ item }) => {
         <h2>
           <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
         </h2>
-        <span>${item.prices[0].amount}</span>
+        {item.prices.map((price) => {
+          if (price.currency.symbol === selectedCurrencies) {
+            return (
+              <span>
+                {price.currency.symbol}
+                {price.amount}
+              </span>
+            );
+          }
+          return undefined;
+        })}
+
         {item.attributes.map((sizeItem) => {
           if (sizeItem.name === "Size") {
             return <p>Size</p>;
