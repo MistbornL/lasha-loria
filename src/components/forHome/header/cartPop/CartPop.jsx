@@ -17,9 +17,12 @@ export const CartPop = ({ cartRef }) => {
           </h1>
         </div>
 
-        {cartData.map((item) => {
+        {cartData.map((item, index) => {
           return (
-            <section style={{ position: "relative", height: "180px" }}>
+            <section
+              key={index}
+              style={{ position: "relative", height: "180px" }}
+            >
               <div className="card-pop-top">
                 <h2>{item.name}</h2>
                 <h1>{item.prices[0].amount}$</h1>
@@ -28,7 +31,7 @@ export const CartPop = ({ cartRef }) => {
                 if (sizeItem.name === "Size") {
                   return <p key={index}>Size</p>;
                 } else if (sizeItem.name === "Capacity") {
-                  return <p>Capacity</p>;
+                  return <p key={index}>Capacity</p>;
                 } else {
                   return null;
                 }
