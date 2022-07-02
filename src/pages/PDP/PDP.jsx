@@ -9,6 +9,9 @@ const PDP = () => {
   const params = useParams();
   const [card, setCard] = useState({});
   const product = useSelector((state) => state.store.product);
+  const selectedCurrencies = useSelector(
+    (state) => state.store.selectedCurrencies
+  );
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
@@ -132,10 +135,17 @@ const PDP = () => {
               </div>
               <div className="price">
                 <h1>Price:</h1>
-                <h2>
-                  {card.prices[0].currency.symbol}
-                  {card.prices[0].amount}
-                </h2>
+                {card.prices.map((item) => {
+                  if (item.currency.symbol === selectedCurrencies) {
+                    return (
+                      <h2>
+                        {item.currency.symbol}
+                        {item.amount}
+                      </h2>
+                    );
+                  }
+                })}
+
                 <button onClick={handleButton}>ADD TO CART</button>
               </div>
 

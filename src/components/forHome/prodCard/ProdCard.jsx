@@ -4,10 +4,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { storeToCart } from "../../../state/reducer";
 import { useDispatch } from "react-redux/es/exports";
-
-const ProdCard = ({ item, name, img, price, symbol, id, inStock }) => {
+import { useSelector } from "react-redux/es/hooks/useSelector";
+const ProdCard = ({ item, name, img, id, inStock }) => {
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
+  const selectedCurrencies = useSelector(
+    (state) => state.store.selectedCurrencies
+  );
+
   return (
     <div
       className={inStock ? "prod-card-top" : "out-of-stock"}
@@ -53,10 +57,17 @@ const ProdCard = ({ item, name, img, price, symbol, id, inStock }) => {
         </Link>
         <div className="desc">
           <p>{name}</p>
-          <strong>
-            {symbol}
-            {price}
-          </strong>
+          {item.prices.map((price) => {
+            if (price.currency.symbol === selectedCurrencies) {
+              return (
+                <strong>
+                  {price.currency.symbol}
+                  {price.amount}
+                </strong>
+              );
+            }
+            return undefined;
+          })}
         </div>
       </div>
     </div>
