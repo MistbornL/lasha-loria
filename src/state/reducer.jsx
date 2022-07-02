@@ -46,6 +46,11 @@ export const storeSlice = createSlice({
           }
           if (item.name !== action.payload.name) {
             state.cart.push({ ...action.payload, count: 1 });
+            state.cart = [
+              ...state.cart
+                .reduce((map, obj) => map.set(obj.id, obj), new Map())
+                .values(),
+            ];
           }
           return item;
         });
