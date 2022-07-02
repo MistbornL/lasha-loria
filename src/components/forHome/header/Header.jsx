@@ -87,10 +87,7 @@ export const Header = () => {
           <img className="header-middle" src={greenPack} alt="logo" />
         </div>
         <div ref={currencyRef} className="currency">
-          {currency.map((item, index) => {
-            return <p key={index}>{selectedCurrencies}</p>;
-          })}
-
+          <p>{selectedCurrencies}</p>
           <span onClick={handleArrow}>
             <img src={!toggleArrow ? down : up} alt="arrow" />
           </span>
@@ -130,7 +127,6 @@ export const Header = () => {
           ) : (
             <img onClick={handleCart} src={cart} alt="cart" />
           )}
-
           <div ref={cartRef} className="cart">
             {toggleCart ? <CartPop /> : null}
           </div>
