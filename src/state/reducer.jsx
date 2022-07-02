@@ -5,6 +5,7 @@ export const storeSlice = createSlice({
   initialState: {
     data: { categories: [], currencies: [] },
     categories: [],
+    selectedCurrencies: "$",
     product: {
       id: "",
       name: "",
@@ -42,6 +43,7 @@ export const storeSlice = createSlice({
       } else {
         state.cart.map((item) => {
           if (item.name === action.payload.name) {
+            console.log("Ah");
             item.count += 1;
           }
           if (item.name !== action.payload.name) {
@@ -87,9 +89,13 @@ export const storeSlice = createSlice({
         isSelected: false,
       }));
     },
+    setSelectedCurrencies: (state, action) => {
+      state.selectedCurrencies = action.payload;
+    },
   },
 });
 export const {
+  setSelectedCurrencies,
   storeData,
   storeCategories,
   storeProduct,

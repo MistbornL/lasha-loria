@@ -25,6 +25,9 @@ export const Header = () => {
   const categories = useSelector((state) => state.store.categories);
   const currency = useSelector((state) => state.store.currencies);
   const cartData = useSelector((state) => state.store.cart);
+  const selectedCurrencies = useSelector(
+    (state) => state.store.selectedCurrencies
+  );
   const currencyRef = useRef();
   const cartRef = useRef();
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
@@ -85,7 +88,7 @@ export const Header = () => {
         </div>
         <div ref={currencyRef} className="currency">
           {currency.map((item, index) => {
-            return <p key={index}>{item.isSelected ? item.symbol : null}</p>;
+            return <p key={index}>{selectedCurrencies}</p>;
           })}
 
           <span onClick={handleArrow}>
