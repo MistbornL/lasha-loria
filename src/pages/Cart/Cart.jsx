@@ -6,6 +6,10 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
   const cartData = useSelector((state) => state.store.cart);
+  const selectedCurrencies = useSelector(
+    (state) => state.store.selectedCurrencies
+  );
+
   // const cartData = [
   //   ...useSelector((state) => state.store.cart)
   //     .reduce((map, obj) => map.set(obj.id, obj), new Map())
@@ -15,10 +19,16 @@ const Cart = () => {
   var tax = 0;
   var total = 0;
   cartData.map((item) => {
-    return (tax += Math.round(
-      item.prices[0].amount * item.count * 0.21,
-      (total += Math.round(item.prices[0].amount * item.count + tax))
-    ));
+    item.prices.map((price) => {
+      if (price.currency.symbol === selectedCurrencies) {
+        return (tax += Math.round(
+          price.amount * item.count * 0.21,
+          (total += Math.round(price.amount * item.count + tax))
+        ));
+      }
+      return undefined;
+    });
+    return undefined;
   });
 
   return (
