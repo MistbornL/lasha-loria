@@ -11,7 +11,6 @@ const ProdCard = ({ item, name, img, id, inStock }) => {
   const selectedCurrencies = useSelector(
     (state) => state.store.selectedCurrencies
   );
-
   return (
     <div
       className={inStock ? "prod-card-top" : "out-of-stock"}
@@ -57,10 +56,10 @@ const ProdCard = ({ item, name, img, id, inStock }) => {
         </Link>
         <div className="desc">
           <p>{name}</p>
-          {item.prices.map((price) => {
+          {item.prices.map((price, index) => {
             if (price.currency.symbol === selectedCurrencies) {
               return (
-                <strong>
+                <strong key={index}>
                   {price.currency.symbol}
                   {price.amount}
                 </strong>

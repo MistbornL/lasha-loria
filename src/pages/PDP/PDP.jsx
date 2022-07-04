@@ -21,12 +21,6 @@ const PDP = () => {
     dispatch(storeToCart(card));
   };
 
-  const handleSize = (e) => {
-    if (e.target.textContent !== selectedSize) {
-      dispatch(setSelectedSize(e.target.textContent));
-    }
-    console.log(selectedSize);
-  };
   useEffect(() => {
     setIsLoading(false);
     product.map((item) => {
@@ -98,11 +92,11 @@ const PDP = () => {
                   .map((item) => {
                     if (item.name === "Size") {
                       return item.items.map((size, index) => {
-                        console.log(size.value === selectedSize);
+                        console.log(card);
                         return (
                           <Fragment key={index}>
                             <div
-                              onClick={handleSize}
+                              onClick={() => dispatch(card, size.value)}
                               style={
                                 selectedSize === size.value
                                   ? { background: "black" }

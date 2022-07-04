@@ -21,6 +21,7 @@ import { useRef } from "react";
 export const Header = () => {
   const [toggleArrow, setToggleArrow] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
+
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.store.categories);
   const currency = useSelector((state) => state.store.currencies);

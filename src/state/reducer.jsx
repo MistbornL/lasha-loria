@@ -25,7 +25,10 @@ export const storeSlice = createSlice({
       }));
     },
     storeProduct: (state, action) => {
-      state.product = action.payload;
+      state.product = action.payload.map((item) => ({
+        ...item,
+        selectedSize: "",
+      }));
     },
     storeToCart: (state, action) => {
       if (state.cart.length === 0 && action.payload.inStock !== false) {
@@ -84,9 +87,13 @@ export const storeSlice = createSlice({
     setSelectedCurrencies: (state, action) => {
       state.selectedCurrencies = action.payload;
     },
-    setSelectedSize: (state, action) => {
-      state.selectedSize = action.payload;
-    },
+    // setSelectedSize: (state, action, size) => {
+    //   state.procuct.map((item) => {
+    //     if (item.name === action.payload.name) {
+    //       return { ...action.payload, selectedSize: size };
+    //     }
+    //   });
+    // },
     setSelectedColor: (state, action) => {
       state.selectedColor = action.payload;
     },
