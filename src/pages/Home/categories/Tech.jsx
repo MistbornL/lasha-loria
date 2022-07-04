@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GET_TECH_CATEGORIES } from "../../../GraphQL/Queries";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@apollo/client";
@@ -9,11 +9,13 @@ export const Tech = () => {
   const dispatch = useDispatch();
   const { loading, error, data } = useQuery(GET_TECH_CATEGORIES);
   const selecteds = useSelector((state) => state.store);
+  const products = useSelector((state) => state.store.product);
 
-  if (loading) return "Loading...";
-  if (error) return `Error! ${error.message}`;
-  dispatch(storeProduct(data.category.products));
-
+  useEffect(() => {
+    if (data) {
+      dispatch(storeProduct(data.category.products));
+    }
+  }, [data, loading, error, dispatch]);
   return (
     <div className="App">
       <Header />
@@ -25,7 +27,7 @@ export const Tech = () => {
 
       <main>
         <section className="prod-card">
-          {data.category.products.map((item, index) => {
+          {products.map((item, index) => {
             return (
               <ProdCard
                 item={item}
