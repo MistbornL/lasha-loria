@@ -86,13 +86,14 @@ export const storeSlice = createSlice({
     setSelectedCurrencies: (state, action) => {
       state.selectedCurrencies = action.payload;
     },
-    // setSelectedSize: (state, action, size) => {
-    //   state.procuct.map((item) => {
-    //     if (item.name === action.payload.name) {
-    //       return { ...action.payload, selectedSize: size };
-    //     }
-    //   });
-    // },
+    setSelectedSize: (state, action) => {
+      state.selectedSize = action.payload;
+      //   state.procuct.map((item) => {
+      //     if (item.name === action.payload.name) {
+      //       return { ...action.payload, selectedSize: size };
+      //     }
+      //   });
+    },
     setSelectedColor: (state, action) => {
       state.selectedColor = action.payload;
     },

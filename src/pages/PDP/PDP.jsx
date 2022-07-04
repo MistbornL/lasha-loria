@@ -95,10 +95,12 @@ const PDP = () => {
                         return (
                           <Fragment key={index}>
                             <div
-                              onClick={(e) => (card.selectedSize = size.value)}
+                              onClick={() =>
+                                dispatch(setSelectedSize(size.value))
+                              }
                               style={
                                 selectedSize === size.value
-                                  ? { background: "black" }
+                                  ? { background: "black", color: "white" }
                                   : null
                               }
                             >
