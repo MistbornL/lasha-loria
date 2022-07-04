@@ -48,22 +48,19 @@ export const Header = () => {
       dispatch(storeData(data));
       dispatch(storeCategories(data.categories));
       dispatch(storeCurrencies(data.currencies));
+      const handler = (e) => {
+        if (!currencyRef.current.contains(e.target)) {
+          setToggleArrow(false);
+        }
+        if (!cartRef.current.contains(e.target)) setToggleCart(false);
+      };
+      document.addEventListener("mousedown", handler);
+
+      return () => {
+        document.removeEventListener("mousedown", handler);
+      };
     }
   }, [loading, data, dispatch, error]);
-
-  useEffect(() => {
-    const handler = (e) => {
-      if (!currencyRef.current.contains(e.target)) {
-        setToggleArrow(false);
-      }
-      if (!cartRef.current.contains(e.target)) setToggleCart(false);
-    };
-    document.addEventListener("mousedown", handler);
-
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
 
   return (
     <header>
