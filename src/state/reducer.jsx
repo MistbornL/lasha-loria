@@ -38,7 +38,6 @@ export const storeSlice = createSlice({
       } else {
         state.cart.map((item) => {
           if (item.name === action.payload.name) {
-            console.log("Ah");
             item.count += 1;
           }
           if (item.name !== action.payload.name) {

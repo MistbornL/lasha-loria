@@ -92,11 +92,10 @@ const PDP = () => {
                   .map((item) => {
                     if (item.name === "Size") {
                       return item.items.map((size, index) => {
-                        console.log(card);
                         return (
                           <Fragment key={index}>
                             <div
-                              onClick={() => dispatch(card, size.value)}
+                              onClick={(e) => (card.selectedSize = size.value)}
                               style={
                                 selectedSize === size.value
                                   ? { background: "black" }
