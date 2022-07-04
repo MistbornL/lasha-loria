@@ -19,7 +19,6 @@ export const Home = () => {
       dispatch(storeProduct(data.category.products));
     }
   }, [data, loading, error, dispatch]);
-  console.log(products);
   return (
     <div className="App">
       <Header />
