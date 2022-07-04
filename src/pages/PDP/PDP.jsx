@@ -25,7 +25,7 @@ const PDP = () => {
     if (e.target.textContent !== selectedSize) {
       dispatch(setSelectedSize(e.target.textContent));
     }
-    console.log();
+    console.log(selectedSize);
   };
   useEffect(() => {
     setIsLoading(false);
@@ -102,6 +102,7 @@ const PDP = () => {
                         return (
                           <Fragment key={index}>
                             <div
+                              onClick={handleSize}
                               style={
                                 selectedSize === size.value
                                   ? { background: "black" }
