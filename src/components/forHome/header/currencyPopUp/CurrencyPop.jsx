@@ -2,11 +2,12 @@ import { setSelectedCurrencies } from "../../../../state/reducer";
 import "./currency.scss";
 import { useDispatch } from "react-redux/es/exports";
 
-const CurrencyPop = ({ item }) => {
+const CurrencyPop = ({ item, arrow }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
     dispatch(setSelectedCurrencies(item.symbol));
+    arrow(false);
   };
   return (
     <div className="pop">

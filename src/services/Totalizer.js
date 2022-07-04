@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Totalizer = (data, targetCurrency, tax, total) => {
   return data.map((item) => {
     item.prices.map((price) => {

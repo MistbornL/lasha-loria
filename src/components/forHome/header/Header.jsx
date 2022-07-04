@@ -95,7 +95,13 @@ export const Header = () => {
           <div className="popup">
             {toggleArrow
               ? currency.map((item, index) => {
-                  return <CurrencyPop item={item} key={index} />;
+                  return (
+                    <CurrencyPop
+                      item={item}
+                      arrow={setToggleArrow}
+                      key={index}
+                    />
+                  );
                 })
               : null}
           </div>
