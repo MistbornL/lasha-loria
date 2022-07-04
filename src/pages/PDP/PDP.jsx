@@ -3,7 +3,7 @@ import "./pdp.scss";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import React, { Fragment, useEffect, useState } from "react";
-import { storeToCart } from "../../state/reducer";
+import { setSelectedSize, storeToCart } from "../../state/reducer";
 
 const PDP = () => {
   const params = useParams();
@@ -12,6 +12,7 @@ const PDP = () => {
   const selectedCurrencies = useSelector(
     (state) => state.store.selectedCurrencies
   );
+  const selectedSize = useSelector((state) => state.store.selectedSize);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
@@ -20,6 +21,12 @@ const PDP = () => {
     dispatch(storeToCart(card));
   };
 
+  const handleSize = (e) => {
+    if (e.target.textContent !== selectedSize) {
+      dispatch(setSelectedSize(e.target.textContent));
+    }
+    console.log();
+  };
   useEffect(() => {
     setIsLoading(false);
     product.map((item) => {
@@ -91,9 +98,18 @@ const PDP = () => {
                   .map((item) => {
                     if (item.name === "Size") {
                       return item.items.map((size, index) => {
+                        console.log(size.value === selectedSize);
                         return (
                           <Fragment key={index}>
-                            <div>{size.value} </div>
+                            <div
+                              style={
+                                selectedSize === size.value
+                                  ? { background: "black" }
+                                  : null
+                              }
+                            >
+                              {size.value}{" "}
+                            </div>
                           </Fragment>
                         );
                       });

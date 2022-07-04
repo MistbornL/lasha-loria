@@ -1,12 +1,21 @@
 import React, { Fragment } from "react";
 import { useDispatch } from "react-redux";
-import { decrement, increment } from "../../../state/reducer";
+import { decrement, increment, setSelectedSize } from "../../../state/reducer";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 export const CartItem = ({ item }) => {
   const dispatch = useDispatch();
   const selectedCurrencies = useSelector(
     (state) => state.store.selectedCurrencies
   );
+  const selectedSize = useSelector((state) => state.store.selectedSize);
+
+  const handleSize = (e) => {
+    console.log(e);
+    // dispatch(setSelectedSize(size));
+    // if (size === selectedSize) {
+    //   console.log("Ah");
+    // }
+  };
 
   return (
     <section className="cart-wrapper">
@@ -42,7 +51,7 @@ export const CartItem = ({ item }) => {
               return sizeItem.items.map((size, index) => {
                 return (
                   <Fragment key={index}>
-                    <div>{size.value} </div>
+                    <div onClick={handleSize}>{size.value} </div>
                   </Fragment>
                 );
               });

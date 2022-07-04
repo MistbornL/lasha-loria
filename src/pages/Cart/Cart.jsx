@@ -10,14 +10,9 @@ const Cart = () => {
     (state) => state.store.selectedCurrencies
   );
 
-  // const cartData = [
-  //   ...useSelector((state) => state.store.cart)
-  //     .reduce((map, obj) => map.set(obj.id, obj), new Map())
-  //     .values(),
-  // ];
-
   var tax = 0;
   var total = 0;
+
   cartData.map((item) => {
     item.prices.map((price) => {
       if (price.currency.symbol === selectedCurrencies) {
@@ -44,7 +39,11 @@ const Cart = () => {
 
       <div className="cart-footer">
         <p>
-          Tax 21%: <strong>{tax}$</strong>
+          Tax 21%:{" "}
+          <strong>
+            {tax}
+            {selectedCurrencies}
+          </strong>
         </p>
 
         <p>
@@ -55,7 +54,11 @@ const Cart = () => {
         </p>
 
         <p>
-          total: <strong>{total}$</strong>
+          total:{" "}
+          <strong>
+            {total}
+            {selectedCurrencies}
+          </strong>
         </p>
       </div>
     </div>

@@ -21,6 +21,8 @@ export const storeSlice = createSlice({
     uniqueCart: [],
     name: "all",
     currencies: [],
+    selectedSize: "",
+    selectedColor: "",
   },
   reducers: {
     storeData: (state, action) => {
@@ -92,9 +94,17 @@ export const storeSlice = createSlice({
     setSelectedCurrencies: (state, action) => {
       state.selectedCurrencies = action.payload;
     },
+    setSelectedSize: (state, action) => {
+      state.selectedSize = action.payload;
+    },
+    setSelectedColor: (state, action) => {
+      state.selectedColor = action.payload;
+    },
   },
 });
 export const {
+  setSelectedSize,
+  setSelectedColor,
   setSelectedCurrencies,
   storeData,
   storeCategories,
