@@ -17,12 +17,24 @@ const PDP = () => {
     (state) => state.store.selectedCurrencies
   );
   const selectedSize = useSelector((state) => state.store.selectedSize);
+  const selectedColor = useSelector((state) => state.store.selectedColor);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
   const handleButton = (e) => {
     e.preventDefault();
-    dispatch(storeToCart(card));
+    card.attributes.map((item) => {
+      if (
+        item.name === "Size" ||
+        (item.name === "Capacity" && selectedSize === "")
+      ) {
+        alert("Select Options");
+      } else if (item.name === "Color" && selectedColor === "") {
+        alert("Select Color");
+      } else {
+        dispatch(storeToCart(card));
+      }
+    });
   };
 
   useEffect(() => {
