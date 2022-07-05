@@ -18,23 +18,31 @@ const PDP = () => {
   );
   const selectedSize = useSelector((state) => state.store.selectedSize);
   const selectedColor = useSelector((state) => state.store.selectedColor);
+  const cart = useSelector((state) => state.store.cart);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
   const handleButton = (e) => {
+    console.log(cart);
     e.preventDefault();
-    card.attributes.map((item) => {
-      if (
-        item.name === "Size" ||
-        (item.name === "Capacity" && selectedSize === "")
-      ) {
-        alert("Select Options");
-      } else if (item.name === "Color" && selectedColor === "") {
-        alert("Select Color");
-      } else {
-        dispatch(storeToCart(card));
-      }
-    });
+    if (card.attributes.length !== 0) {
+      card.attributes.map((item) => {
+        if (
+          (item.name === "Size" && selectedSize === "") ||
+          (item.name === "Capacity" && selectedSize === "")
+        ) {
+          return alert("Select Options");
+        } else if (item.name === "Color" && selectedColor === "") {
+          return alert("Select Color");
+        } else {
+          return dispatch(storeToCart(card));
+        }
+      });
+    } else {
+      dispatch(storeToCart(card));
+    }
+
+    console.log(card.attributes);
   };
 
   useEffect(() => {

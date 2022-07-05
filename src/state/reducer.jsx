@@ -25,10 +25,7 @@ export const storeSlice = createSlice({
       }));
     },
     storeProduct: (state, action) => {
-      state.product = action.payload.map((item) => ({
-        ...item,
-        selectedSize: "",
-      }));
+      state.product = action.payload;
     },
     storeToCart: (state, action) => {
       if (state.cart.length === 0 && action.payload.inStock !== false) {
@@ -41,7 +38,12 @@ export const storeSlice = createSlice({
             item.count += 1;
           }
           if (item.name !== action.payload.name) {
-            state.cart.push({ ...action.payload, count: 1 });
+            state.cart.push({
+              ...action.payload,
+              count: 1,
+              // selectedSize: state.selectedSize,
+              // selectedColor: state.selectedColor,
+            });
             state.cart = [
               ...state.cart
                 .reduce((map, obj) => map.set(obj.id, obj), new Map())
