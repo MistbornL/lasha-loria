@@ -45,6 +45,7 @@
   }
   .size {
     @include cart-size;
+    cursor: pointer;
   }
   .price {
     margin-bottom: 40px;

@@ -3,7 +3,11 @@ import "./pdp.scss";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import React, { Fragment, useEffect, useState } from "react";
-import { setSelectedSize, storeToCart } from "../../state/reducer";
+import {
+  setSelectedColor,
+  setSelectedSize,
+  storeToCart,
+} from "../../state/reducer";
 
 const PDP = () => {
   const params = useParams();
@@ -114,7 +118,18 @@ const PDP = () => {
                         return (
                           <Fragment key={index}>
                             <div className="size">
-                              <div>{cap.value} </div>
+                              <div
+                                onClick={() =>
+                                  dispatch(setSelectedSize(cap.value))
+                                }
+                                style={
+                                  selectedSize === cap.value
+                                    ? { background: "black", color: "white" }
+                                    : null
+                                }
+                              >
+                                {cap.value}{" "}
+                              </div>
                             </div>
                           </Fragment>
                         );
@@ -135,6 +150,9 @@ const PDP = () => {
                         const colorValue = color.value;
                         return (
                           <div
+                            onClick={() =>
+                              dispatch(setSelectedColor(color.value))
+                            }
                             key={index}
                             style={{ background: colorValue }}
                           ></div>
@@ -156,6 +174,7 @@ const PDP = () => {
                       </h2>
                     );
                   }
+                  return undefined;
                 })}
 
                 <button onClick={handleButton}>ADD TO CART</button>
