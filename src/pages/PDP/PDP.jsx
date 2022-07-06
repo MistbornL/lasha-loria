@@ -184,10 +184,10 @@ const PDP = () => {
               </div>
               <div className="price">
                 <h1>Price:</h1>
-                {card.prices.map((item) => {
+                {card.prices.map((item, index) => {
                   if (item.currency.symbol === selectedCurrencies) {
                     return (
-                      <h2>
+                      <h2 key={index}>
                         {item.currency.symbol}
                         {item.amount}
                       </h2>
