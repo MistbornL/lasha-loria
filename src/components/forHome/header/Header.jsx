@@ -69,15 +69,6 @@ export const Header = () => {
             return (
               <li key={index}>
                 <Link to={`/${item.name}`}>{item.name}</Link>
-
-                {/* <Link
-                  onClick={() => {
-                    dispatch(setName(item.name));
-                  }}
-                  to={`/${item.name}`}
-                > */}
-
-                {/* </Link> */}
               </li>
             );
           })}
