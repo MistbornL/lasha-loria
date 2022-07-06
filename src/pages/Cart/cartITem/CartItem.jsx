@@ -1,19 +1,18 @@
 import React, { Fragment } from "react";
 import { useDispatch } from "react-redux";
-import { decrement, increment, setSelectedSize } from "../../../state/reducer";
+import { decrement, increment } from "../../../state/reducer";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 export const CartItem = ({ item }) => {
   const dispatch = useDispatch();
   const selectedCurrencies = useSelector(
     (state) => state.store.selectedCurrencies
   );
-  const selectedSize = useSelector((state) => state.store.selectedSize);
+  // const selectedSize = useSelector((state) => state.store.selectedSize);
 
   const handleSize = (e) => {
     console.log(e);
     // dispatch(setSelectedSize(size));
     // if (size === selectedSize) {
-    //   console.log("Ah");
     // }
   };
 
