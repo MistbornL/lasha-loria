@@ -8,6 +8,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 const ProdCard = ({ item, name, img, id, inStock }) => {
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
+  const selectedSize = useSelector((state) => state.store.selectedSize);
   const selectedCurrencies = useSelector(
     (state) => state.store.selectedCurrencies
   );
@@ -20,7 +21,11 @@ const ProdCard = ({ item, name, img, id, inStock }) => {
       <div className="prod-img">
         <img
           onClick={() => {
-            dispatch(storeToCart(item));
+            dispatch(
+              selectedSize !== ""
+                ? storeToCart(item)
+                : alert("choose options first")
+            );
           }}
           style={{
             position: "absolute",

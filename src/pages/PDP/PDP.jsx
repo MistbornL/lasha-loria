@@ -29,11 +29,10 @@ const PDP = () => {
       card.attributes.map((item) => {
         if (
           (item.name === "Size" && selectedSize === "") ||
-          (item.name === "Capacity" && selectedSize === "")
+          (item.name === "Capacity" && selectedSize === "") ||
+          (item.name === "Color" && selectedColor === "")
         ) {
           return alert("Select Options");
-        } else if (item.name === "Color" && selectedColor === "") {
-          return alert("Select Color");
         } else {
           return dispatch(storeToCart(card));
         }
