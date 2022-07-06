@@ -10,7 +10,6 @@ import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
 import {
   storeData,
-  setName,
   storeCurrencies,
   storeCategories,
 } from "../../../state/reducer";
@@ -69,14 +68,16 @@ export const Header = () => {
           {categories.map((item, index) => {
             return (
               <li key={index}>
-                <Link
+                <Link to={`/${item.name}`}>{item.name}</Link>
+
+                {/* <Link
                   onClick={() => {
                     dispatch(setName(item.name));
                   }}
                   to={`/${item.name}`}
-                >
-                  {item.name}
-                </Link>
+                > */}
+
+                {/* </Link> */}
               </li>
             );
           })}

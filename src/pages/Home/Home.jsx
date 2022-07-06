@@ -7,24 +7,44 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_CATEGORIES } from "../../GraphQL/Queries";
 import { storeProduct } from "../../state/reducer";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const { loading, error, data } = useQuery(GET_ALL_CATEGORIES);
-  const selecteds = useSelector((state) => state.store);
+
   const products = useSelector((state) => state.store.product);
+  const params = useParams();
+
+  const { loading, error, data } = useQuery(GET_ALL_CATEGORIES);
+  console.log(
+    data.category.products.filter((item) => item.category === "clothes")
+  );
 
   useEffect(() => {
     if (data) {
-      dispatch(storeProduct(data.category.products));
+      if (params.category === "clothes") {
+        dispatch(
+          storeProduct(
+            data.category.products.filter((item) => item.category === "clothes")
+          )
+        );
+      } else if (params.category === "tech") {
+        dispatch(
+          storeProduct(
+            data.category.products.filter((item) => item.category === "tech")
+          )
+        );
+      } else {
+        dispatch(storeProduct(data.category.products));
+      }
     }
-  }, [data, loading, error, dispatch]);
+  }, [data, loading, error, dispatch, params.category]);
 
   return (
     <div className="App">
       <Header />
       <div className="category-name">
-        <h1>{selecteds.name}</h1>
+        <h1>{params.category}</h1>
       </div>
       <main>
         <section className="prod-card">
