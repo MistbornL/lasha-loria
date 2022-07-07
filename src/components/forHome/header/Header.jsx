@@ -13,7 +13,7 @@ import {
   storeCurrencies,
   storeCategories,
 } from "../../../state/reducer";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CartPop } from "./cartPop/CartPop";
 import { useRef } from "react";
 
@@ -25,11 +25,13 @@ export const Header = () => {
   const categories = useSelector((state) => state.store.categories);
   const currency = useSelector((state) => state.store.currencies);
   const cartData = useSelector((state) => state.store.cart);
+
   const selectedCurrencies = useSelector(
     (state) => state.store.selectedCurrencies
   );
   const currencyRef = useRef();
   const cartRef = useRef();
+  const params = useParams();
   const { loading, error, data } = useQuery(GET_CATEGORIES_AND_CURRENCIES);
 
   const handleArrow = () => {
