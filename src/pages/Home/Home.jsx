@@ -16,9 +16,6 @@ export const Home = () => {
   const params = useParams();
 
   const { loading, error, data } = useQuery(GET_ALL_CATEGORIES);
-  console.log(
-    data.category.products.filter((item) => item.category === "clothes")
-  );
 
   useEffect(() => {
     if (data) {
