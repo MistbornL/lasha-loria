@@ -3,6 +3,7 @@ import { addToBasket } from "../redux/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Header from "../components/header/Header";
+import "./product.scss";
 
 class Products extends Component {
   getCurrency = (product) => {
