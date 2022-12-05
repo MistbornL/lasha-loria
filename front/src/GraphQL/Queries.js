@@ -1,54 +1,91 @@
-import { gql } from "@apollo/client";
+import { gql } from "graphql-request";
 
-export const GET_CATEGORIES_AND_CURRENCIES = gql`
+export const GET_DATA = gql`
+  query {
+    categories {
+      name
+      products {
+        id
+        name
+        inStock
+        gallery
+        description
+        attributes {
+          id
+          name
+          type
+          items {
+            displayValue
+            value
+            id
+          }
+        }
+        prices {
+          currency {
+            label
+            symbol
+          }
+          amount
+        }
+        brand
+      }
+    }
+  }
+`;
+
+export const GET_CURRENCIES = gql`
   query {
     currencies {
       label
       symbol
     }
+  }
+`;
+
+export const GET_CATEGORIES = gql`
+  {
     categories {
       name
     }
   }
 `;
 
-export const GET_ALL_CATEGORIES = gql`
-  query {
-    category(input: { title: "all" }) {
+export function getProductById(id) {
+  return gql`
+  {
+    product(id: "${id}") {
+      id
       name
-      products {
+      inStock
+      gallery
+      description
+      attributes {
         id
         name
-        inStock
-        gallery
-        description
-        category
-        attributes {
+        type
+        items {
+          displayValue
+          value
           id
-          name
-          type
-          items {
-            displayValue
-            value
-            id
-          }
         }
-        prices {
-          currency {
-            label
-            symbol
-          }
-          amount
-        }
-        brand
       }
+      prices {
+        currency {
+          label
+          symbol
+        }
+        amount
+      }
+      brand
     }
   }
 `;
+}
 
-export const GET_TECH_CATEGORIES = gql`
-  query {
-    category(input: { title: "tech" }) {
+export function getCategoryByName(name) {
+  return gql`
+  {
+    category(input: {title:"${name}"}){
       name
       products {
         id
@@ -56,7 +93,6 @@ export const GET_TECH_CATEGORIES = gql`
         inStock
         gallery
         description
-        category
         attributes {
           id
           name
@@ -75,41 +111,7 @@ export const GET_TECH_CATEGORIES = gql`
           amount
         }
         brand
-      }
-    }
-  }
-`;
-
-export const GET_CLOTHES_CATEGORIES = gql`
-  query {
-    category(input: { title: "clothes" }) {
-      name
-      products {
-        id
-        name
-        inStock
-        gallery
-        description
-        category
-        attributes {
-          id
-          name
-          type
-          items {
-            displayValue
-            value
-            id
-          }
-        }
-        prices {
-          currency {
-            label
-            symbol
-          }
-          amount
-        }
-        brand
-      }
-    }
-  }
-`;
+      }      
+    }   
+  }`;
+}
