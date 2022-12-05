@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { getTotalPrice, getProductsQuantity, makeId } from "../helper";
 import BasketItem from "./BasketItem";
-import { getTotalPrice, getProductsQuantity, makeId } from "../../helper";
 
 class MiniBasket extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class MiniBasket extends Component {
           data-target="#exampleModal"
           onClick={() => this.onAfterOpen()}
         >
-          <img src={require("../../../src/imgs/basket.png")} alt="" />
+          <img src={require("../../../src/assets/basket.png")} alt="" />
           {itemQuantity !== 0 ? (
             <span className="badge ">{itemQuantity}</span>
           ) : (

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { addToBasket } from "../redux/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Header from "../components/header/Header";
 
 class Products extends Component {
   getCurrency = (product) => {
@@ -43,7 +44,10 @@ class Products extends Component {
 
   render() {
     return (
-      <>
+      <div className="App">
+        <header>
+          <Header />
+        </header>
         <h1 className="category-title">
           {this.props.category.categories
             .find((item) => item.selected)
@@ -72,7 +76,7 @@ class Products extends Component {
             );
           })}
         </div>
-      </>
+      </div>
     );
   }
 }
