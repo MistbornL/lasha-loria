@@ -1,16 +1,16 @@
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
-import PDP from "./pages/PDP/PDP";
-import Cart from "./pages/Cart/Cart";
-import { Home } from "./pages/Home/Home";
+import Product from "./pages/Product";
+import Basket from "./pages/Basket";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/PDP/:id" element={<PDP />} />
-      <Route path="/:category" element={<Home />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/" element={<Product />} />
+      <Route path="/basket" element={<Basket />} />
+      <Route path="/details:id" element={<ProductDetails />} />
+      <Route path="/:id" element={<Product />} />
     </Routes>
   );
 }
