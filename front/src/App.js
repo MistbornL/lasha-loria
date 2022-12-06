@@ -1,5 +1,5 @@
 import "./App.scss";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import Product from "./pages/Product";
 import Basket from "./pages/Basket";
 import ProductDetails from "./pages/ProductDetails";
