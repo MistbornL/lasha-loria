@@ -68,7 +68,10 @@ class Products extends Component {
                       className="add-product-btn"
                       onClick={() => this.props.addToBasket(product)}
                     >
-                      <img src={require("../assets/basket-hover.png")} alt="" />
+                      <img
+                        src={require("../assets/basket-hover.png")}
+                        alt="basket"
+                      />
                     </button>
                   ) : (
                     ""

@@ -41,7 +41,7 @@ export const categoryMiddleware = (store) => (next) => (action) => {
           next(action);
         })
         .catch(() => {
-          alert("Faild To Fetch Data😕Please Check your Network Connection");
+          alert("Failed To Fetch Data Please Check your Network Connection");
         });
       break;
     default:
