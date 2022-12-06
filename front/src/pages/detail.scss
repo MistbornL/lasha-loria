@@ -1,0 +1,71 @@
+.images {
+  width: 10%;
+  display: block;
+  margin-right: 10px;
+
+  img {
+    width: 100%;
+    padding-right: 30px;
+    cursor: pointer;
+    margin-bottom: 32px;
+  }
+}
+.main-image {
+  width: 45%;
+}
+.description {
+  font-family: "Roboto";
+  line-height: 1.5rem;
+  margin-top: 40px;
+  color: var(--black);
+}
+.product-info {
+  width: 20%;
+  margin-left: 100px;
+  button {
+    margin-bottom: 10px;
+    background-color: #5ece7b;
+    padding: 1rem 2rem;
+    width: 100%;
+    border: none;
+    color: #ffff;
+    cursor: pointer;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+    margin: 0;
+  }
+  h1 {
+    font-weight: 400;
+    margin: 1rem 0 2rem 0;
+  }
+  b {
+    font-family: "Roboto Condensed";
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 35px;
+    text-transform: uppercase;
+  }
+  .attribute {
+    display: flex;
+    font-family: "Source Sans Pro", sans-serif;
+    gap: 8px;
+
+    .active {
+      background: black;
+      border: 2px solid #5ece7b;
+      color: #ffff;
+    }
+    .attribute-box {
+      width: 63px;
+      height: 45px;
+      text-align: center;
+      line-height: 45px;
+      font-size: 16px;
+      border: 1px solid black;
+    }
+  }
+}

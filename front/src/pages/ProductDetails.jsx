@@ -7,6 +7,7 @@ import { getProductById } from "../GraphQL/Queries";
 import { request } from "graphql-request";
 import ProductAttribute from "../components/ProductAttribute";
 import Header from "../components/header/Header";
+import "./detail.scss";
 
 class ProductDetails extends Component {
   constructor(props) {
@@ -74,7 +75,7 @@ class ProductDetails extends Component {
         </header>
         {this.state.loaded && !this.state.hasError ? (
           <>
-            <div className="pdp">
+            <div style={{ display: "flex" }} className="pdp">
               <div className="images">
                 {product.gallery.map((imgUrl, i) => (
                   <img
