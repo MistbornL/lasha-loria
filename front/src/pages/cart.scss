@@ -7,13 +7,113 @@
   hr {
     margin: 24px 0px;
   }
+
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    .item-info {
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      h2 {
+        white-space: nowrap;
+      }
+      h1 {
+        font-weight: 400;
+        margin: 1rem 0 2rem 0;
+      }
+      span {
+        font-weight: 700;
+        font-size: 24px;
+      }
+    }
+  }
+  b {
+    font-family: "Roboto Condensed";
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    line-height: 40px;
+  }
+  .attribute {
+    display: flex;
+    font-family: "Source Sans Pro", sans-serif;
+    gap: 8px;
+    .active {
+      background: black;
+      border: 2px solid #5ece7b;
+      color: #ffff;
+    }
+    .attribute-box {
+      width: 63px;
+      height: 45px;
+      text-align: center;
+      line-height: 45px;
+      font-size: 16px;
+      border: 1px solid var(--black);
+    }
+  }
+  .item-amount {
+    display: flex;
+    position: relative;
+    width: 293px;
+    .change-amount {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      .plus-minus-square {
+        border: 1px solid var(--black);
+        cursor: pointer;
+        font-size: 2rem;
+      }
+      .quantity-square {
+        font-size: 24px;
+        border: none;
+      }
+      .plus-minus-square {
+        border: 1px solid var(--black);
+        cursor: pointer;
+        font-size: 2rem;
+      }
+    }
+    .cart-img {
+      width: 100%;
+      margin-left: 4%;
+      display: inline-flex;
+      img {
+        width: 100%;
+        align-self: center;
+        object-fit: fill;
+      }
+    }
+    .arrows {
+      display: flex;
+      justify-content: space-between;
+      width: 56px;
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      span {
+        width: 24px;
+        height: 24px;
+        position: relative;
+        font-size: x-large;
+        background: rgba(0, 0, 0, 0.73);
+        color: white;
+        text-align: center;
+        line-height: 19px;
+        cursor: pointer;
+      }
+    }
+  }
+
   .payment-info {
     flex-direction: column;
     align-items: flex-start;
-
+    display: flex;
+    justify-content: space-between;
     .all-info {
       display: flex;
-
       .titles-totals {
         display: grid;
         span {
