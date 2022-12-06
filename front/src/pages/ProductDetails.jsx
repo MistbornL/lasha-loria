@@ -66,7 +66,7 @@ class ProductDetails extends Component {
 
   render() {
     const { product } = this.state;
-    console.log(this.props);
+    console.log(product);
 
     return (
       <div className="App">

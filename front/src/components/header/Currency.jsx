@@ -16,7 +16,7 @@ class Currency extends Component {
 
   handleClickOutside(event) {
     if (!this.state.showHide && !this.ref.current.contains(event.target)) {
-      this.showHideCurrencyList();
+      this.setState({ showHide: !this.state.showHide });
     }
   }
 
@@ -28,13 +28,9 @@ class Currency extends Component {
     document.removeEventListener("click", this.handleClickOutside, true);
   }
 
-  onCurrancyChange(value) {
+  onCurrencyChange(value) {
     this.setState({ currentCurrency: value, showHide: !this.state.showHide });
     this.props.setCurrency(value);
-  }
-
-  showHideCurrencyList() {
-    this.setState({ showHide: !this.state.showHide });
   }
 
   render() {
@@ -44,7 +40,7 @@ class Currency extends Component {
       <div className="cart-currency">
         <div className="dropdown" ref={this.ref}>
           <button
-            onClick={() => this.showHideCurrencyList()}
+            onClick={() => this.setState({ showHide: !this.state.showHide })}
             className="dropbtn"
           >
             {this.state.currentCurrency}&nbsp;
@@ -59,7 +55,7 @@ class Currency extends Component {
             }
           >
             {currencies.map((c, i) => (
-              <span key={i} onClick={() => this.onCurrancyChange(c.symbol)}>
+              <span key={i} onClick={() => this.onCurrencyChange(c.symbol)}>
                 {c.symbol + " "}
                 {c.label}
               </span>
