@@ -96,5 +96,59 @@
     .dropdown-content span:first-child {
       margin-top: 15px;
     }
+    .modal {
+      position: fixed;
+      top: 76px;
+      right: 55px;
+      bottom: 0;
+      z-index: 1050;
+      outline: 0;
+      left: auto;
+      overflow-y: auto;
+      .modal-dialog {
+        position: relative;
+        box-shadow: 0 3px 9px rgb(0 0 0 / 50%);
+      }
+      .modal-content {
+        width: 325px;
+        position: relative;
+        background-color: #fff;
+        .modal-body {
+          position: relative;
+          padding: 32px 16px;
+          .basket-total {
+            margin: 32px 0px;
+          }
+          .basket-buttons {
+            display: flex;
+            justify-content: space-between;
+
+            a {
+              width: 48%;
+              button {
+                font-weight: 600;
+                font-size: 14px;
+                background-color: #fff;
+                width: 100%;
+                padding: 0.7rem 1rem;
+                color: black;
+                cursor: pointer;
+                border: 2px solid black;
+              }
+            }
+          }
+        }
+      }
+    }
+    .modal-backdrop {
+      position: fixed;
+      top: 76px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1040;
+      background-color: #393748;
+      opacity: 22%;
+    }
   }
 }

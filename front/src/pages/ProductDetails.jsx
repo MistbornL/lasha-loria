@@ -6,12 +6,13 @@ import { API_URL } from "../GraphQL/settings";
 import { getProductById } from "../GraphQL/Queries";
 import { request } from "graphql-request";
 import ProductAttribute from "../components/ProductAttribute";
+import Header from "../components/header/Header";
 
 class ProductDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.match.params.id,
+      id: window.location.href.split("/")[4],
       product: {},
       loaded: false,
       hasError: false,
@@ -21,6 +22,7 @@ class ProductDetails extends Component {
   }
 
   componentDidMount() {
+    console.log(window.location.href.split("/")[4]);
     request(API_URL, getProductById(this.state.id))
       .then((res) => {
         const product = res.product;
@@ -63,9 +65,13 @@ class ProductDetails extends Component {
 
   render() {
     const { product } = this.state;
+    console.log(this.props);
 
     return (
-      <>
+      <div className="App">
+        <header>
+          <Header />
+        </header>
         {this.state.loaded && !this.state.hasError ? (
           <>
             <div className="pdp">
@@ -118,7 +124,7 @@ class ProductDetails extends Component {
           ""
         )}
         <br />
-      </>
+      </div>
     );
   }
 }
