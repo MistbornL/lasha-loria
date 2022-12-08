@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Header from "../components/header/Header";
 import "./product.scss";
+import filter from "../assets/filter.png";
 
 class Products extends Component {
   getCurrency = (product) => {
@@ -42,12 +43,29 @@ class Products extends Component {
       </>
     );
   };
-
+  constructor() {
+    super();
+    this.state = {
+      isFilter: false,
+    };
+  }
   render() {
-    console.log(this.props);
     return (
       <div className="App">
-        <header>
+        <img
+          onClick={() => this.setState({ isFilter: true })}
+          style={{
+            cursor: "pointer",
+            position: "sticky",
+            top: "50%",
+            marginLeft: "-194px",
+            width: "70px",
+          }}
+          src={filter}
+          alt="filter"
+        />
+        {this.state.isFilter ? <Filter /> : null}
+        <header style={{ marginTop: "-70px" }}>
           <Header />
         </header>
         <h1 className="category-title">
@@ -57,6 +75,7 @@ class Products extends Component {
         </h1>
         <div className="products">
           {this.props.products.products.map((product) => {
+            console.log(product);
             return (
               <div className="product" key={product.id}>
                 <div className="thumbnail">
