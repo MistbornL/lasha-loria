@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/header/Header";
 import "./product.scss";
 import filter from "../assets/filter.png";
+import Filter from "../components/Filter/Filter";
 
 class Products extends Component {
   getCurrency = (product) => {
@@ -50,10 +51,11 @@ class Products extends Component {
     };
   }
   render() {
+    console.log(this.props.products);
     return (
       <div className="App">
         <img
-          onClick={() => this.setState({ isFilter: true })}
+          onClick={() => this.setState({ isFilter: !this.state.isFilter })}
           style={{
             cursor: "pointer",
             position: "sticky",
@@ -64,7 +66,7 @@ class Products extends Component {
           src={filter}
           alt="filter"
         />
-        {this.state.isFilter ? <Filter /> : null}
+        <Filter isFilter={this.state.isFilter} />
         <header style={{ marginTop: "-70px" }}>
           <Header />
         </header>
@@ -75,7 +77,6 @@ class Products extends Component {
         </h1>
         <div className="products">
           {this.props.products.products.map((product) => {
-            console.log(product);
             return (
               <div className="product" key={product.id}>
                 <div className="thumbnail">

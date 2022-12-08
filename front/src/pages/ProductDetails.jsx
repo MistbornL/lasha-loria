@@ -23,7 +23,6 @@ class ProductDetails extends Component {
   }
 
   componentDidMount() {
-    console.log(window.location.href.split("/")[4]);
     request(API_URL, getProductById(this.state.id))
       .then((res) => {
         const product = res.product;
@@ -66,7 +65,6 @@ class ProductDetails extends Component {
 
   render() {
     const { product } = this.state;
-    console.log(product);
 
     return (
       <div className="App">

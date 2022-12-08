@@ -11,7 +11,6 @@ class Basket extends Component {
       (item) => item.selected
     );
     const totalPrice = getTotalPrice(this.props.basket.products, currency) ?? 0;
-    console.log(this.props.basket);
     return (
       <div className="App">
         <header>
