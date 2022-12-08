@@ -60,8 +60,8 @@ class Products extends Component {
             cursor: "pointer",
             position: "sticky",
             top: "50%",
-            marginLeft: "-194px",
-            width: "70px",
+            marginLeft: "-160px",
+            width: "51px",
           }}
           src={filter}
           alt="filter"

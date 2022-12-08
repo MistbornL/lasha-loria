@@ -76,6 +76,7 @@ export default class Filter extends Component {
             );
           })}
         </div>
+        <button className="btn btn-primary mt-3">filter</button>
       </div>
     );
   }
