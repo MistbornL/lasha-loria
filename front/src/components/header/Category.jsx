@@ -16,7 +16,11 @@ class Category extends Component {
                 key={i}
                 className={x.selected ? "category-active" : ""}
               >
-                <span onClick={() => this.props.setCategory(x.name)}>
+                <span
+                  onClick={() => {
+                    this.props.setCategory(x.name);
+                  }}
+                >
                   {x.name.toUpperCase()}
                 </span>
               </Link>

@@ -55,7 +55,7 @@
       top: 76px;
       right: 55px;
       bottom: 0;
-      z-index: 1050;
+      z-index: 999;
       outline: 0;
       left: auto;
       overflow-y: auto;
@@ -118,11 +118,12 @@
       left: auto;
       overflow-y: auto;
       .modal-dialog {
+        width: 350px;
+        margin-left: 1450px;
         position: relative;
         box-shadow: 0 3px 9px rgb(0 0 0 / 50%);
       }
       .modal-content {
-        width: 325px;
         position: relative;
         background-color: #fff;
         .modal-body {

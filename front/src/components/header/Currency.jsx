@@ -35,7 +35,6 @@ class Currency extends Component {
 
   render() {
     const { currencies } = this.props.currency;
-    console.log(this.state.showHide);
     return (
       <div className="cart-currency">
         <div className="dropdown" ref={this.ref}>
